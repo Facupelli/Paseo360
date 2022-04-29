@@ -32,18 +32,23 @@ const getUserById = async (req, res) => {
 
 const registerUser = async (req, res) => {
   try {
-    const { data } = req.body;
+    const { name, email, password } = req.body;
 
-    const isUserExist = await User.findOne({ email: data.email });
+    const isUserExist = await User.findOne({ email });
 
     if (isUserExist) {
       return res.status(400).json({ error: "Email already registered" });
     }
 
     const salt = await bcrypt.genSalt(10);
-    const passwordHash = await bcrypt.hash(data.password, salt);
+    const passwordHash = await bcrypt.hash(password, salt);
 
-    const user = new User({ ...data, passwordHash, });
+    const userData = {
+      name,
+      email,
+    };
+
+    const user = new User({ ...userData, passwordHash });
 
     const newUser = await user.save();
     res.status(201).json(newUser); // 201 succes when creating

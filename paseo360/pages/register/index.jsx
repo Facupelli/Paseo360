@@ -2,14 +2,14 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
-import Link from "next/link";
 
 const schema = yup.object().shape({
+  name: yup.string().required().min(2),
   email: yup.string().required().email(),
   password: yup.string().required().min(8),
 });
 
-export default function Login() {
+export default function Register() {
   const {
     register,
     handleSubmit,
@@ -20,7 +20,7 @@ export default function Login() {
   const onSubmit = async (data) => {
     console.log(data);
 
-    const res = await axios.post("/login", data).catch((e) => {
+    const res = await axios.post("/users", data).catch((e) => {
       if (e.response) {
         console.log(e.response.data);
       }
@@ -34,6 +34,10 @@ export default function Login() {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <input {...register("name")} type="text" placeholder="ReMax" />
+          {errors.name && <span>{errors.name.message}</span>}
+        </div>
         <div>
           <input
             {...register("email")}
@@ -50,18 +54,8 @@ export default function Login() {
           />
           {errors.password && <span>{errors.password.message}</span>}
         </div>
-        <button type="submit">Login</button>
+        <button>Register</button>
       </form>
-      <div>
-        <p>No estas registrado?</p>
-        <p>
-          Registrate en Paseo360 y accede a nuestro servicio de publicacion de
-          anuncios inmobiliarios!
-        </p>
-        <Link href="/register">
-          <a>Registrate</a>
-        </Link>
-      </div>
     </div>
   );
 }
