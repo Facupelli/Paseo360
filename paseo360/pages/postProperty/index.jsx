@@ -70,6 +70,15 @@ export default function postProperty() {
           {errors.description && <span>{errors.description.message}</span>}
         </div>
         <div>
+          <label>Dirección:</label>
+          <input
+            {...register("adress")}
+            type="text"
+            placeholder="barrio Huarpe al 206 oeste"
+          />
+          {errors.description && <span>{errors.description.message}</span>}
+        </div>
+        <div>
           <label>Superficie Total:</label>
           <input {...register("total_area")} type="text" placeholder="1200" />
           {errors.total_area && <span>{errors.total_area.message}</span>}

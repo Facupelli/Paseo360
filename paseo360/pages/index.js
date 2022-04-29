@@ -1,8 +1,20 @@
-import Head from 'next/head'
-import { NavBar } from 'components/NavBar/NavBar'
-import styles from 'styles/Home.module.css'
+import Head from "next/head";
+import { NavBar } from "components/NavBar/NavBar";
+import styles from "styles/Home.module.css";
+import PropertyCard from "components/PropertyCard/PropertyCard";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Home() {
+  const [properties, setProperties] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("/properties")
+      .then((res) => setProperties(res.data))
+      .catch((e) => console.log(e));
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +25,11 @@ export default function Home() {
 
       <main className={styles.main}>
         <NavBar />
+        {properties.length > 0 &&
+          properties.map((property) => (
+            <PropertyCard key={property._id} property={property} />
+          ))}
       </main>
     </div>
-  )
+  );
 }
