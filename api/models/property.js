@@ -46,6 +46,9 @@ const propertySchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  base_image: { type: String },
+  images: { type: Array, default: [] },
+  tour_images: { type: Array, default: [] },
 });
 
 module.exports = mongoose.model("Property", propertySchema);
