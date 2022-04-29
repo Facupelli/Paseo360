@@ -5,16 +5,16 @@ const User = require("../models/user");
 const login = async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email: email });
 
   if (!user) {
-    res.status(401).json({ error: "Invalid email" });
+    return res.status(401).json({ error: "Invalid email" });
   }
 
   const isPasswordCorrect = await bcrypt.compare(password, user.passwordHash);
 
   if (!isPasswordCorrect) {
-    res.status(401).json({ error: "Invalid Password" });
+    return res.status(401).json({ error: "Invalid Password" });
   }
 
   const userForToken = {

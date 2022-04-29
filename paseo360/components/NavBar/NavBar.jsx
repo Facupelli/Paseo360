@@ -1,4 +1,5 @@
-import s from './NavBar.module.scss'
+import Link from "next/link";
+import s from "./NavBar.module.scss";
 
 export const NavBar = () => {
   return (
@@ -10,6 +11,9 @@ export const NavBar = () => {
         <p>ALQUILER</p>
         <p>VENTA</p>
         <p>ABOUT</p>
+        <Link href="/login">
+          <a>LOGIN</a>
+        </Link>
         <p>CONTACTO</p>
       </div>
     </nav>
