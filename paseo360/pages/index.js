@@ -13,9 +13,6 @@ export default function Home() {
 
       <main className={styles.main}>
         <NavBar />
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
       </main>
     </div>
   )
