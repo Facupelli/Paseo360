@@ -4,6 +4,7 @@ import styles from "styles/Home.module.scss";
 import PropertyCard from "components/PropertyCard/PropertyCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import PropertyFilter from "components/PropertyFilter/PropertyFilter";
 
 export default function Home() {
   const [properties, setProperties] = useState([]);
@@ -26,7 +27,9 @@ export default function Home() {
       <main className={styles.main}>
         <NavBar />
         <div>
-          <div></div>
+          <div>
+            <PropertyFilter />
+          </div>
           <div>
             {properties.length > 0 &&
               properties.map((property) => (
