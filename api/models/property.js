@@ -22,15 +22,7 @@ const propertySchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  semicover_area: {
-    type: Number,
-    required: true,
-  },
   cover_area: {
-    type: Number,
-    required: true,
-  },
-  terrain_area: {
     type: Number,
     required: true,
   },
@@ -50,9 +42,12 @@ const propertySchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  base_image: { type: String },
+  base_image: { type: String, required: true },
   images: { type: Array, default: [] },
   tour_images: { type: Array, default: [] },
+  currency: { type: String, required: true },
+  property_type: { type: String, required: true },
+  operation_type: { type: String, required: true },
 });
 
 module.exports = mongoose.model("Property", propertySchema);

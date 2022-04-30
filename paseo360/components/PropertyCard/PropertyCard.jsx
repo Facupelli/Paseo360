@@ -2,7 +2,6 @@ import Image from "next/image";
 import s from "./PropertyCard.module.scss";
 
 export default function PropertyCard({ property }) {
-  console.log(property);
   return (
     <>
       {property && (
@@ -13,6 +12,7 @@ export default function PropertyCard({ property }) {
               alt={property.name}
               width={300}
               height={210}
+              style={{borderBottomLeftRadius: 2, borderTopLeftRadius: 2}}
             />
           </div>
           <div className={s.info_container}>
