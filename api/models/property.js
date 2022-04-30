@@ -48,6 +48,7 @@ const propertySchema = new mongoose.Schema({
   currency: { type: String, required: true },
   property_type: { type: String, required: true },
   operation_type: { type: String, required: true },
+  ambiences: {type: Number, required: true}
 });
 
 module.exports = mongoose.model("Property", propertySchema);

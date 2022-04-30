@@ -57,6 +57,12 @@ export default function PropertyFilter() {
             <label htmlFor="price_end">Precio Hasta: </label>
             <input type="text" id="price_end" />
           </div>
+          <div>
+            <select name="currency">
+              <option>Pesos</option>
+              <option>Dólares</option>
+            </select>
+          </div>
         </div>
         <div>
           <label htmlFor="garage">Año Construcción: </label>
