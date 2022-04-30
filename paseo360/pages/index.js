@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { NavBar } from "components/NavBar/NavBar";
-import styles from "styles/Home.module.css";
+import styles from "styles/Home.module.scss";
 import PropertyCard from "components/PropertyCard/PropertyCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -25,10 +25,15 @@ export default function Home() {
 
       <main className={styles.main}>
         <NavBar />
-        {properties.length > 0 &&
-          properties.map((property) => (
-            <PropertyCard key={property._id} property={property} />
-          ))}
+        <div>
+          <div></div>
+          <div>
+            {properties.length > 0 &&
+              properties.map((property) => (
+                <PropertyCard key={property._id} property={property} />
+              ))}
+          </div>
+        </div>
       </main>
     </div>
   );
