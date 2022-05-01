@@ -21,6 +21,7 @@ export default function PropertyCard({ property }) {
             <div className={s.price}>
               <p>{property.price}</p>
               <p>{property.currency}</p>
+              <p>{property.operation_type}</p>
             </div>
             <div className={s.property_info}>
               <div className={s.area}>

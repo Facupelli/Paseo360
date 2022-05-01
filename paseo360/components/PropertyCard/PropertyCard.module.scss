@@ -35,9 +35,15 @@
     .price {
       display: flex;
       gap: 0.5rem;
-      margin-top: 1rem;
-      font-size: 1.4rem;
-      font-weight: 500;
+
+      >p{
+        margin-top: 1rem;
+        font-size: 1.4rem;
+        font-weight: 500;
+      }
+      >p:last-child{
+        font-weight: 400;
+      }
     }
 
     .property_info {
