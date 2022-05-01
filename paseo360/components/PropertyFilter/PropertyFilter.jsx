@@ -99,12 +99,14 @@ export default function PropertyFilter({ setProperties }) {
               type="text"
               id="price_start"
               {...methods.register("price_start")}
+              placeholder="precio"
             />
             <label htmlFor="price_end">Precio hasta:</label>
             <input
               type="text"
               id="price_end"
               {...methods.register("price_end")}
+              placeholder="precio"
             />
             <div>
               <select
@@ -121,7 +123,7 @@ export default function PropertyFilter({ setProperties }) {
 
           {!showMoreFilter && <p onClick={handleShowMoreFilter}>Mas Filtros</p>}
 
-          {showMoreFilter && <MoreFilters />}
+          {showMoreFilter && <MoreFilters setShowMoreFilters={setShowMoreFilters} />}
 
           <button>Buscar</button>
         </form>

@@ -1,13 +1,17 @@
 import { useFormContext } from "react-hook-form";
+import s from "./MoreFilters.module.scss";
 
-export default function MoreFilters() {
+export default function MoreFilters({ setShowMoreFilters }) {
   const {
     register,
     formState: { errors },
   } = useFormContext();
-  
+
   return (
     <>
+      <p className={s.hide_filters} onClick={() => setShowMoreFilters(false)}>
+        ^
+      </p>
       <div>
         <label htmlFor="garage">Año Construcción: </label>
       </div>
