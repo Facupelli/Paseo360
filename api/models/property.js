@@ -6,12 +6,20 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  property_type: { type: String, required: true },
+  operation_type: { type: String, required: true },
   price: {
     type: Number,
     required: true,
   },
+  currency: { type: String, required: true },
+  departamento: { type: String, required: true },
   adress: {
     type: String,
+    required: true,
+  },
+  year_built: {
+    type: Number,
     required: true,
   },
   description: {
@@ -38,17 +46,10 @@ const propertySchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  year_built: {
-    type: Number,
-    required: true,
-  },
+  ambiences: { type: Number, required: true },
   base_image: { type: String, required: true },
   images: { type: Array, default: [] },
   tour_images: { type: Array, default: [] },
-  currency: { type: String, required: true },
-  property_type: { type: String, required: true },
-  operation_type: { type: String, required: true },
-  ambiences: {type: Number, required: true}
 });
 
 module.exports = mongoose.model("Property", propertySchema);
