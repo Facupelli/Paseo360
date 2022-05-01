@@ -28,7 +28,7 @@ export default function Home() {
         <NavBar />
         <div>
           <div>
-            <PropertyFilter />
+            <PropertyFilter setProperties={setProperties} />
           </div>
           <div>
             {properties.length > 0 &&

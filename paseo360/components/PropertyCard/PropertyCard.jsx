@@ -20,7 +20,7 @@ export default function PropertyCard({ property }) {
             <p className={s.adress}>{property.adress}</p>
             <div className={s.price}>
               <p>{property.price}</p>
-              <p>{property.currency === 'Pesos' ? "ARS" : "USD"}</p>
+              <p>{property.currency}</p>
             </div>
             <div className={s.property_info}>
               <div className={s.area}>

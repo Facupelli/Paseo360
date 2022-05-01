@@ -9,7 +9,7 @@ const getAllProperties = async (req, res) => {
       operation_type = "all",
       departamento = "all",
       real_estate = "all",
-      currency,
+      currency = 'all',
       price_start,
       price_end,
     } = req.query;
@@ -18,7 +18,7 @@ const getAllProperties = async (req, res) => {
 
     //PIPELINE
     let matchPipeline = [];
-    
+
     if (property_type !== "all") {
       matchPipeline.push({ property_type });
     }
@@ -28,13 +28,15 @@ const getAllProperties = async (req, res) => {
     if (departamento !== "all") {
       matchPipeline.push({ departamento });
     }
-    if(currency){
-      matchPipeline.push({currency})
+    if (currency !== 'all') {
+      matchPipeline.push({ currency });
     }
 
     if (price_start || price_end) {
       if (price_start && price_end) {
-        matchPipeline.push({ price: { $gt: Number(price_start), $lt: Number(price_end) } });
+        matchPipeline.push({
+          price: { $gt: Number(price_start), $lt: Number(price_end) },
+        });
       }
       if (price_start && !price_end) {
         matchPipeline.push({ price: { $gt: Number(price_start) } });
@@ -44,20 +46,23 @@ const getAllProperties = async (req, res) => {
       }
     }
 
-    console.log('PIPELINE', matchPipeline)
+    console.log("PIPELINE", matchPipeline);
 
-    //AGGREGATE
-    const filterProperties = await Property.aggregate([
-      {
-        $match: {
-          $and: matchPipeline,
-        },
-      },
-    ]);
+    let properties = [];
 
-    if (!filterProperties)
+    matchPipeline.length > 0
+      ? (properties = await Property.aggregate([
+          {
+            $match: {
+              $and: matchPipeline,
+            },
+          },
+        ]))
+      : (properties = await Property.find());
+
+    if (!properties)
       res.status(404).json({ error: "Not Found Any Properties" });
-    res.json(filterProperties);
+    res.json(properties);
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
