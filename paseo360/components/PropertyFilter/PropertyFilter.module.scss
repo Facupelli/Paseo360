@@ -9,6 +9,16 @@
     > div {
       display: grid;
       grid-template-columns: 40% 60%;
+      align-items: center;
+      row-gap: .5rem;
+
+      > select {
+          @include filter_select;
+      }
+
+      >input{
+          @include filter_input;
+      }
     }
 
     .price_range {
@@ -20,7 +30,7 @@
           grid-column: 2;
           
           select{
-            //   @include filter_select;
+              @include filter_select;
               width: 100%;
           }
       }

@@ -1,3 +1,9 @@
 @mixin filter_select {
-    padding: .5rem .5rem .5rem 0rem;
-  }
+  padding: 0.3rem;
+  font-weight: 600;
+}
+
+@mixin filter_input {
+  padding: 0.3rem;
+  font-weight: 600;
+}
