@@ -66,8 +66,8 @@ export default function PropertyFilter() {
             <input type="text" id="price_end" {...methods.register("price_end")}/>
             <div>
               <select name="currency" {...methods.register("currency")}>
-                <option>Pesos</option>
-                <option>Dólares</option>
+                <option value="ARS">Pesos</option>
+                <option value="USD">Dólares</option>
               </select>
             </div>
           </div>

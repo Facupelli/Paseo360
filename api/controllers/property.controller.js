@@ -4,10 +4,60 @@ const User = require("../models/user");
 
 const getAllProperties = async (req, res) => {
   try {
-    const properties = await Property.find();
-    if (!properties)
+    const {
+      property_type = "all",
+      operation_type = "all",
+      departamento = "all",
+      real_estate = "all",
+      currency,
+      price_start,
+      price_end,
+    } = req.query;
+
+    // const properties = await Property.find();
+
+    //PIPELINE
+    let matchPipeline = [];
+    
+    if (property_type !== "all") {
+      matchPipeline.push({ property_type });
+    }
+    if (operation_type !== "all") {
+      matchPipeline.push({ operation_type });
+    }
+    if (departamento !== "all") {
+      matchPipeline.push({ departamento });
+    }
+    if(currency){
+      matchPipeline.push({currency})
+    }
+
+    if (price_start || price_end) {
+      if (price_start && price_end) {
+        matchPipeline.push({ price: { $gt: Number(price_start), $lt: Number(price_end) } });
+      }
+      if (price_start && !price_end) {
+        matchPipeline.push({ price: { $gt: Number(price_start) } });
+      }
+      if (price_end && !price_start) {
+        matchPipeline.push({ price: { $lt: Number(price_end) } });
+      }
+    }
+
+    console.log('PIPELINE', matchPipeline)
+
+    //AGGREGATE
+    const filterProperties = await Property.aggregate([
+      {
+        $match: {
+          $and: matchPipeline,
+        },
+      },
+    ]);
+
+    if (!filterProperties)
       res.status(404).json({ error: "Not Found Any Properties" });
-    res.json(properties);
+    res.json(filterProperties);
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
