@@ -1,5 +1,29 @@
+@import "../../styles/app.scss";
+
 .container {
   border-radius: 0.2rem;
   box-shadow: rgba(0, 0, 0, 0.068) 0px 0px 3px 1px;
   padding: 0.5rem 1rem;
+
+  form {
+    > div {
+      display: grid;
+      grid-template-columns: 40% 60%;
+    }
+
+    .price_range {
+      margin: 1rem 0rem;
+      display: grid;
+      grid-template-columns: 40% 60%;
+
+      >div {
+          grid-column: 2;
+          
+          select{
+            //   @include filter_select;
+              width: 100%;
+          }
+      }
+    }
+  }
 }
