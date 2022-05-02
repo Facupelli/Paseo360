@@ -79,7 +79,7 @@ export default function postProperty() {
               {errors.currency && <span>{errors.currency.message}</span>}
             </div>
 
-            {/* <div>
+            <div className={s.name}>
               <label>Descripción:</label>
               <textarea {...register("description")} type="text" />
               {errors.description && <span>{errors.description.message}</span>}
@@ -123,7 +123,7 @@ export default function postProperty() {
               </div>
             </div>
 
-            <div>
+            <div className={s.year_built}>
               <label>Año de Construción:</label>
               <input
                 {...register("year_built")}
@@ -131,49 +131,43 @@ export default function postProperty() {
                 placeholder="2005"
               />
               {errors.year_built && <span>{errors.year_built.message}</span>}
-            </div> */}
+            </div>
 
-            {/* <div className={s.property_info}>
-              <div className={s.column}>
-                <label>Superficie Total:</label>
-                <input
-                  {...register("total_area")}
-                  type="text"
-                  placeholder="1200"
-                />
-                {errors.total_area && <span>{errors.total_area.message}</span>}
-                <label>Superficie Cubierta:</label>
-                <input
-                  {...register("cover_area")}
-                  type="text"
-                  placeholder="700"
-                />
-                {errors.cover_area && <span>{errors.cover_area.message}</span>}
-                <label>Ambientes:</label>
-                <input
-                  {...register("ambiences")}
-                  type="text"
-                  placeholder="10"
-                />
-                {errors.ambiences && <span>{errors.ambiences.message}</span>}
-              </div>
+            <div className={s.property_info}>
+              <label>Superficie Total:</label>
+              <input
+                {...register("total_area")}
+                type="text"
+                placeholder="1200"
+              />
+              {errors.total_area && <span>{errors.total_area.message}</span>}
+              <label>Superficie Cubierta:</label>
+              <input
+                {...register("cover_area")}
+                type="text"
+                placeholder="700"
+              />
+              {errors.cover_area && <span>{errors.cover_area.message}</span>}
+              <label>Ambientes:</label>
+              <input {...register("ambiences")} type="text" placeholder="10" />
+              {errors.ambiences && <span>{errors.ambiences.message}</span>}
+            </div>
 
-              <div className={s.column}>
-                <label>Dormitorios:</label>
-                <input {...register("bedrooms")} type="text" placeholder="5" />
-                {errors.bedrooms && <span>{errors.bedrooms.message}</span>}
-                <label>Baños:</label>
-                <input {...register("bathrooms")} type="text" placeholder="3" />
-                {errors.bathrooms && <span>{errors.bathrooms.message}</span>}
-                <label>Garages:</label>
-                <input {...register("garage")} type="text" placeholder="4" />
-                {errors.garage && <span>{errors.garage.message}</span>}
-              </div>
+            <div className={s.property_info}>
+              <label>Dormitorios:</label>
+              <input {...register("bedrooms")} type="text" placeholder="5" />
+              {errors.bedrooms && <span>{errors.bedrooms.message}</span>}
+              <label>Baños:</label>
+              <input {...register("bathrooms")} type="text" placeholder="3" />
+              {errors.bathrooms && <span>{errors.bathrooms.message}</span>}
+              <label>Garages:</label>
+              <input {...register("garage")} type="text" placeholder="4" />
+              {errors.garage && <span>{errors.garage.message}</span>}
             </div>
 
             <div className={s.button_container}>
               <button>Siguiente</button>
-            </div> */}
+            </div>
           </div>
         </form>
       </div>

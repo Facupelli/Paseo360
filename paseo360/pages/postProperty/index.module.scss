@@ -20,21 +20,77 @@
 }
 
 .grid_container {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  column-gap: 4%;
+
+  row-gap: 1rem;
+  > div {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid gray;
+
+    &:last-child{
+        border: none;
+    }
+  }
+
   .types {
     grid-column: span 2;
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 24% 24%;
+    row-gap: .5rem;
   }
 
   .name {
     grid-column: span 2;
     display: grid;
-    grid-template-columns: 25% auto;
+    grid-template-columns: 24% auto;
   }
 
-  .price{
+  .price {
     grid-column: span 2;
     display: grid;
-    grid-template-columns: 25% 25% 25%;
+    grid-template-columns: 24% 25% 12.5%;
+
+    select{
+        margin-left: .5rem;
+    }
+  }
+
+  .adress {
+    grid-column: span 2;
+    div {
+      display: grid;
+      grid-template-columns: 24% 24%;
+
+      &:last-child {
+        grid-template-columns: 24% auto;
+        margin-top: .5rem;
+      }
+    }
+  }
+
+  .year_built {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 24% 24%;
+  }
+
+  .property_info {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    row-gap: 0.5rem;
+
+    border: none;
+  }
+
+  .button_container {
+    grid-column: 2;
+    margin-left: auto;
+    width: 50%;
+
+    button {
+      width: 100%;
+    }
   }
 }
