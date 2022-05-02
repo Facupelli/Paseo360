@@ -142,7 +142,7 @@ export default function PropertyFilter({ setProperties, setLoading }) {
             </div>
           </div>
 
-          {!showMoreFilter && <p onClick={handleShowMoreFilter}>Mas Filtros</p>}
+          {!showMoreFilter && <button type="button" onClick={handleShowMoreFilter}>Mas Filtros</button>}
 
           {showMoreFilter && (
             <MoreFilters setShowMoreFilters={setShowMoreFilters} />

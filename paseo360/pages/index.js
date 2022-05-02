@@ -5,10 +5,15 @@ import PropertyCard from "components/PropertyCard/PropertyCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import PropertyFilter from "components/PropertyFilter/PropertyFilter";
+import loadingHOC from "components/HOC/loading/loading";
+import PropertyList from "components/PropertyList/PropertyList";
+
+const PropertyListWithLoader = loadingHOC(PropertyList, 'Loading...')
 
 export default function Home() {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     setLoading(true);
@@ -39,12 +44,13 @@ export default function Home() {
             <PropertyFilter setProperties={setProperties} setLoading={setLoading} />
           </div>
           <div>
-            {properties.length > 0 && !loading &&
+            {/* {properties.length > 0 && !loading &&
               properties.map((property) => (
                 <PropertyCard key={property._id} property={property} />
               ))}
             {properties.length === 0 && !loading && <p>No se encontraron propiedades</p>}
-            {loading && <p>Loading...</p>}
+            {loading && <p>Loading...</p>} */}
+            <PropertyListWithLoader loading={loading} properties={properties} />
           </div>
         </div>
       </main>
