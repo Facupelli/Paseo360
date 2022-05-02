@@ -35,14 +35,14 @@ const getAllProperties = async (req, res) => {
     if (price_start || price_end) {
       if (price_start && price_end) {
         matchPipeline.push({
-          price: { $gt: Number(price_start), $lt: Number(price_end) },
+          price: { $gte: Number(price_start), $lte: Number(price_end) },
         });
       }
       if (price_start && !price_end) {
-        matchPipeline.push({ price: { $gt: Number(price_start) } });
+        matchPipeline.push({ price: { $gte: Number(price_start) } });
       }
       if (price_end && !price_start) {
-        matchPipeline.push({ price: { $lt: Number(price_end) } });
+        matchPipeline.push({ price: { $lte: Number(price_end) } });
       }
     }
 

@@ -1,0 +1,40 @@
+@import "../../styles/app.scss";
+
+.container {
+  @include app_width(900px);
+  margin-top: 2rem;
+
+  form {
+    label {
+      margin-right: 1rem;
+    }
+
+    input {
+      @include filter_input;
+    }
+
+    select {
+      @include filter_select;
+    }
+  }
+}
+
+.grid_container {
+  .types {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+
+  .name {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 25% auto;
+  }
+
+  .price{
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+  }
+}

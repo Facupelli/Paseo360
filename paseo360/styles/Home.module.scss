@@ -1,8 +1,8 @@
+@import '../styles/app.scss';
+
 .main {
   > div {
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    @include app_width;
     margin-top: 2rem;
     display: grid;
     grid-template-columns: 30% 68%;
