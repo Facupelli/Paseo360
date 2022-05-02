@@ -8,9 +8,11 @@ export const NavBar = () => {
         <img src="/vercel.svg" alt="logo" />
       </div>
       <div className={s.pages_container}>
+        <Link href="/">
+          <p>PROPIEDADES</p>
+        </Link>
         <p>ALQUILER</p>
         <p>VENTA</p>
-        <p>ABOUT</p>
         <Link href="/login">
           <a>LOGIN</a>
         </Link>

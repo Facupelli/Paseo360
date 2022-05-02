@@ -8,12 +8,20 @@ import PropertyFilter from "components/PropertyFilter/PropertyFilter";
 
 export default function Home() {
   const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get("/properties")
-      .then((res) => setProperties(res.data))
-      .catch((e) => console.log(e));
+      .then((res) => {
+        setProperties(res.data);
+        setLoading(false);
+      })
+      .catch((e) => {
+        console.log(e);
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -28,13 +36,15 @@ export default function Home() {
         <NavBar />
         <div>
           <div>
-            <PropertyFilter setProperties={setProperties} />
+            <PropertyFilter setProperties={setProperties} setLoading={setLoading} />
           </div>
           <div>
-            {properties.length > 0 &&
+            {properties.length > 0 && !loading &&
               properties.map((property) => (
                 <PropertyCard key={property._id} property={property} />
               ))}
+            {properties.length === 0 && !loading && <p>No se encontraron propiedades</p>}
+            {loading && <p>Loading...</p>}
           </div>
         </div>
       </main>

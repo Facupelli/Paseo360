@@ -6,7 +6,7 @@ import MoreFilters from "./MoreFilters/MoreFilters";
 import Register from "pages/register";
 import axios from "axios";
 
-export default function PropertyFilter({ setProperties }) {
+export default function PropertyFilter({ setProperties, setLoading }) {
   const [showMoreFilter, setShowMoreFilters] = useState(false);
 
   const handleShowMoreFilter = () => {
@@ -16,6 +16,7 @@ export default function PropertyFilter({ setProperties }) {
   const methods = useForm();
 
   const onSubmit = async (data) => {
+    setLoading(true);
     console.log(data);
     const {
       property_type,
@@ -34,8 +35,28 @@ export default function PropertyFilter({ setProperties }) {
     }
     axios
       .get(url)
-      .then((res) => setProperties(res.data))
-      .catch((e) => console.log(e));
+      .then((res) => {
+        setProperties(res.data);
+        setLoading(false);
+      })
+      .catch((e) => {
+        console.log(e);
+        setLoading(false);
+      });
+  };
+
+  const handleResetFilters = () => {
+    setLoading(true);
+    axios
+      .get("/properties")
+      .then((res) => {
+        setProperties(res.data);
+        setLoading(false);
+      })
+      .catch((e) => {
+        console.log(e);
+        setLoading(false);
+      });
   };
 
   return (
@@ -123,9 +144,14 @@ export default function PropertyFilter({ setProperties }) {
 
           {!showMoreFilter && <p onClick={handleShowMoreFilter}>Mas Filtros</p>}
 
-          {showMoreFilter && <MoreFilters setShowMoreFilters={setShowMoreFilters} />}
+          {showMoreFilter && (
+            <MoreFilters setShowMoreFilters={setShowMoreFilters} />
+          )}
 
           <button>Buscar</button>
+          <button type="button" onClick={handleResetFilters}>
+            Limpiar Filtros
+          </button>
         </form>
       </FormProvider>
     </div>

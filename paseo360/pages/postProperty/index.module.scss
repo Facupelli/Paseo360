@@ -16,6 +16,10 @@
     select {
       @include filter_select;
     }
+
+    textarea{
+        resize: vertical;
+    }
   }
 }
 
