@@ -9,6 +9,7 @@ export default function PropertyDetailPage({ property }) {
     <>
       <NavBar />
       <Multimedia
+        propertyName={property.name}
         propertyImages={property.images}
         tour_images={property.tour_images}
       />

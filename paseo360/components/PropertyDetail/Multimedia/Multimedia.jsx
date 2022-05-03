@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import s from "./Multimedia.module.scss";
 
-export default function Multimedia({ propertyImages, tour_images }) {
+export default function Multimedia({
+  propertyName,
+  propertyImages,
+  tour_images,
+}) {
   const [images, setImages] = useState([]);
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -22,6 +26,7 @@ export default function Multimedia({ propertyImages, tour_images }) {
   return (
     <div className={s.container}>
       <div className={s.top_buttons}>
+        <p>{propertyName}</p>
         <button>Fotos</button>
         <button>Video</button>
         <button>Fotos 360°</button>
@@ -32,7 +37,7 @@ export default function Multimedia({ propertyImages, tour_images }) {
             <Image
               src={images[imageIndex]}
               alt={images[imageIndex]}
-              layout='fill'
+              layout="fill"
               objectFit="contain"
               style={{ borderRadius: 5 }}
             />
@@ -50,6 +55,7 @@ export default function Multimedia({ propertyImages, tour_images }) {
                 alt={image}
                 width={330}
                 height={127}
+                objectFit="cover"
               />
             ))}
         </div>
