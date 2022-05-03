@@ -13,3 +13,10 @@
   padding: 0.3rem;
   font-weight: 600;
 }
+
+@mixin button {
+  padding: .5rem 1rem;
+  background-color: transparent;
+  border-radius: .2rem;
+  cursor: pointer;
+}
