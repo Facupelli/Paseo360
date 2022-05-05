@@ -25,12 +25,7 @@ export default function Multimedia({
 
   return (
     <div className={s.container}>
-      <div className={s.top_buttons}>
-        <p>{propertyName}</p>
-        <button>Fotos</button>
-        <button>Video</button>
-        <button>Fotos 360°</button>
-      </div>
+      <TopButtons propertyName={propertyName} />
       <div className={s.media_container}>
         <div className={s.main_image}>
           {images.length > 0 && (
@@ -72,3 +67,14 @@ export default function Multimedia({
     </div>
   );
 }
+
+const TopButtons = ({ propertyName }) => {
+  return (
+    <div className={s.top_buttons}>
+      <p>{propertyName}</p>
+      <button>Fotos</button>
+      <button>Video</button>
+      <button>Fotos 360°</button>
+    </div>
+  );
+};

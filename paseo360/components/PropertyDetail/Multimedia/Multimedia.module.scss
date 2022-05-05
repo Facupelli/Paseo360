@@ -7,11 +7,12 @@
   .top_buttons {
     display: flex;
     justify-content: flex-end;
+    align-items: flex-end;
     gap: 0.5rem;
 
     p {
       margin-right: auto;
-      font-weight: 500;
+      font-weight: 700;
       font-size: 1.5rem;
     }
 
@@ -25,12 +26,13 @@
     grid-template-columns: 79.5% 19.5%;
     column-gap: 1%;
     height: 380px;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
 
     .main_image {
       position: relative;
-      box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
-        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+      box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+        rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+      border-radius: 0.1rem;
 
       .next_btn_container {
         position: absolute;
@@ -43,21 +45,22 @@
       margin: 0;
       padding: 0.2rem;
       overflow-y: hidden;
-      box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
-        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+      box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+        rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+      border-radius: 0.1rem;
 
       .img_container,
       .img_container_active {
-        margin-bottom: .5rem;
+        margin-bottom: 0.5rem;
       }
 
       .img_container_active {
-        border: 2px solid aqua ;
-        border-radius: .4rem;
+        border: 2px solid aqua;
+        border-radius: 0.4rem;
       }
 
       .img_container {
-        border: 2px solid white ;
+        border: 2px solid white;
       }
     }
   }
