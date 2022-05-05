@@ -9,14 +9,14 @@ export const NavBar = () => {
       </div>
       <div className={s.pages_container}>
         <Link href="/">
-          <p>PROPIEDADES</p>
+          <span>PROPIEDADES</span>
         </Link>
-        <p>ALQUILER</p>
-        <p>VENTA</p>
+        <span>ALQUILER</span>
+        <span>VENTA</span>
         <Link href="/login">
-          <a>LOGIN</a>
+          <span>LOGIN</span>
         </Link>
-        <p>CONTACTO</p>
+        <span>CONTACTO</span>
       </div>
     </nav>
   );
