@@ -3,8 +3,9 @@ import { departamentos } from "assets/departamentos";
 import s from "./PropertyFilter.module.scss";
 import { FormProvider, useForm } from "react-hook-form";
 import MoreFilters from "./MoreFilters/MoreFilters";
-import Register from "pages/register";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAdd } from "@fortawesome/free-solid-svg-icons";
 
 export default function PropertyFilter({
   setProperties,
@@ -20,6 +21,7 @@ export default function PropertyFilter({
   const methods = useForm();
 
   const onSubmit = async (data) => {
+    console.log('ON SUBMIT')
     setLoading(true);
     console.log(data);
     const {
@@ -50,6 +52,11 @@ export default function PropertyFilter({
       });
   };
 
+  const handleChangeSelect = (e) => {
+    methods.setValue("property_type", e.target.value);
+    methods.handleSubmit(onSubmit)();
+  };
+
   const handleResetFilters = () => {
     setLoading(true);
     axios
@@ -57,7 +64,7 @@ export default function PropertyFilter({
       .then((res) => {
         setProperties(res.data.properties);
         setLoading(false);
-        methods.reset()
+        methods.reset();
       })
       .catch((e) => {
         console.log(e);
@@ -69,12 +76,13 @@ export default function PropertyFilter({
     <div className={s.container}>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <div>
+          <div className={s.first_filters}>
             <label htmlFor="type">Tipo: </label>
             <select
               id="type"
               defaultValue="all"
               {...methods.register("property_type")}
+              onChange={(e) => handleChangeSelect(e)}
             >
               <option value="all">Todos</option>
               <option value="Casa">Casa</option>
@@ -155,19 +163,23 @@ export default function PropertyFilter({
           </div>
 
           {!showMoreFilter && (
-            <button type="button" onClick={handleShowMoreFilter}>
-              Mas Filtros
-            </button>
+            <div className={s.showmore_btn_container}>
+              <button type="button" onClick={handleShowMoreFilter}>
+                Más Filtros <FontAwesomeIcon icon={faAdd} style={{width: "1rem"}} />
+              </button>
+            </div>
           )}
 
           {showMoreFilter && (
             <MoreFilters setShowMoreFilters={setShowMoreFilters} />
           )}
 
-          <button>Buscar</button>
-          <button type="button" onClick={handleResetFilters}>
-            Limpiar Filtros
-          </button>
+          <div className={s.search_btn_container}>
+            <button>Buscar</button>
+            <button type="button" onClick={handleResetFilters}>
+              Limpiar Filtros
+            </button>
+          </div>
         </form>
       </FormProvider>
     </div>

@@ -15,7 +15,7 @@ export default function Home() {
   const [realEstates, setRealEstates] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  console.log("REAL ESTATES", realEstates);
+  console.log('LOADING', loading);
 
   useEffect(() => {
     setLoading(true);

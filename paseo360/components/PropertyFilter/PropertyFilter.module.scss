@@ -6,33 +6,56 @@
   padding: 0.5rem 1rem;
 
   form {
-    > div {
+    select {
+      @include filter_select;
+    }
+
+    input {
+      @include filter_input;
+    }
+
+    .first_filters {
       display: grid;
       grid-template-columns: 40% 60%;
       align-items: center;
-      row-gap: .5rem;
-
-      > select {
-          @include filter_select;
-      }
-
-      >input{
-          @include filter_input;
-      }
+      row-gap: 0.5rem;
     }
 
     .price_range {
       margin: 1rem 0rem;
       display: grid;
       grid-template-columns: 40% 60%;
+      row-gap: 0.5rem;
+      align-items: center;
 
-      >div {
-          grid-column: 2;
-          
-          select{
-              @include filter_select;
-              width: 100%;
-          }
+      > div {
+        grid-column: 2;
+
+        select {
+          @include filter_select;
+          width: 100%;
+        }
+      }
+    }
+
+    .showmore_btn_container {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: flex-end;
+
+      button {
+        @include button($blue_2, $blue_3);
+      }
+    }
+
+    .search_btn_container {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+      justify-content: flex-end;
+
+      button {
+        @include button;
       }
     }
   }
