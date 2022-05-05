@@ -8,19 +8,22 @@ import PropertyFilter from "components/PropertyFilter/PropertyFilter";
 import loadingHOC from "components/HOC/loading/loading";
 import PropertyList from "components/PropertyList/PropertyList";
 
-const PropertyListWithLoader = loadingHOC(PropertyList, 'Loading...')
+const PropertyListWithLoader = loadingHOC(PropertyList, "Loading...");
 
 export default function Home() {
   const [properties, setProperties] = useState([]);
+  const [realEstates, setRealEstates] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  console.log("REAL ESTATES", realEstates);
 
   useEffect(() => {
     setLoading(true);
     axios
       .get("/properties")
       .then((res) => {
-        setProperties(res.data);
+        setProperties(res.data.properties);
+        setRealEstates(res.data.realEstates);
         setLoading(false);
       })
       .catch((e) => {
@@ -41,7 +44,10 @@ export default function Home() {
         <NavBar />
         <div>
           <div>
-            <PropertyFilter setProperties={setProperties} setLoading={setLoading} />
+            <PropertyFilter
+              setProperties={setProperties}
+              setLoading={setLoading}
+            />
           </div>
           <div>
             {/* {properties.length > 0 && !loading &&

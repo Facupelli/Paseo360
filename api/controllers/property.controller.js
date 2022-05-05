@@ -60,9 +60,19 @@ const getAllProperties = async (req, res) => {
         ]))
       : (properties = await Property.find());
 
-    if (!properties)
+    if (!properties) {
       res.status(404).json({ error: "Not Found Any Properties" });
-    res.json(properties);
+    }
+
+    //REAL ESTATES
+    const realEstates = await User.find({ "properties.0": { $exists: true } });
+    const realEstatesNames = realEstates.map((realEstate) => realEstate.name);
+
+    res.json({
+      properties,
+      totalProperties: properties.length,
+      realEstates: realEstatesNames,
+    });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
@@ -97,6 +107,11 @@ const postProperty = async (req, res) => {
     if (user) {
       const property = new Property(data);
       const newProperty = await property.save();
+
+      await User.findOneAndUpdate(
+        { _id: req.user.id },
+        { $push: { properties: newProperty._id } }
+      );
 
       res.status(201).json(newProperty); // 201 succes when creating
     }
