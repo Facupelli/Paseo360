@@ -47,6 +47,7 @@ export default function Home() {
             <PropertyFilter
               setProperties={setProperties}
               setLoading={setLoading}
+              realEstates={realEstates}
             />
           </div>
           <div>

@@ -6,7 +6,11 @@ import MoreFilters from "./MoreFilters/MoreFilters";
 import Register from "pages/register";
 import axios from "axios";
 
-export default function PropertyFilter({ setProperties, setLoading }) {
+export default function PropertyFilter({
+  setProperties,
+  setLoading,
+  realEstates,
+}) {
   const [showMoreFilter, setShowMoreFilters] = useState(false);
 
   const handleShowMoreFilter = () => {
@@ -22,11 +26,12 @@ export default function PropertyFilter({ setProperties, setLoading }) {
       property_type,
       operation_type,
       departamento,
+      real_estate,
       price_start,
       price_end,
       currency,
     } = data;
-    let url = `/properties?property_type=${property_type}&operation_type=${operation_type}&departamento=${departamento}&currency=${currency}`;
+    let url = `/properties?property_type=${property_type}&operation_type=${operation_type}&departamento=${departamento}&real_estate=${real_estate}&currency=${currency}`;
     if (price_start) {
       url = `${url}&price_start=${price_start}`;
     }
@@ -36,7 +41,7 @@ export default function PropertyFilter({ setProperties, setLoading }) {
     axios
       .get(url)
       .then((res) => {
-        setProperties(res.data);
+        setProperties(res.data.properties);
         setLoading(false);
       })
       .catch((e) => {
@@ -50,8 +55,9 @@ export default function PropertyFilter({ setProperties, setLoading }) {
     axios
       .get("/properties")
       .then((res) => {
-        setProperties(res.data);
+        setProperties(res.data.properties);
         setLoading(false);
+        methods.reset()
       })
       .catch((e) => {
         console.log(e);
@@ -111,6 +117,12 @@ export default function PropertyFilter({ setProperties, setLoading }) {
               {...methods.register("real_estate")}
             >
               <option value="all">Todos</option>
+              {realEstates &&
+                realEstates.map((realEstate) => (
+                  <option key={realEstate} value={realEstate}>
+                    {realEstate}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -142,7 +154,11 @@ export default function PropertyFilter({ setProperties, setLoading }) {
             </div>
           </div>
 
-          {!showMoreFilter && <button type="button" onClick={handleShowMoreFilter}>Mas Filtros</button>}
+          {!showMoreFilter && (
+            <button type="button" onClick={handleShowMoreFilter}>
+              Mas Filtros
+            </button>
+          )}
 
           {showMoreFilter && (
             <MoreFilters setShowMoreFilters={setShowMoreFilters} />

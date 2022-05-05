@@ -15,7 +15,6 @@ const getAllProperties = async (req, res) => {
     } = req.query;
 
     // const properties = await Property.find();
-
     //PIPELINE
     let matchPipeline = [];
 
@@ -27,6 +26,9 @@ const getAllProperties = async (req, res) => {
     }
     if (departamento !== "all") {
       matchPipeline.push({ departamento });
+    }
+    if (real_estate !== "all") {
+      matchPipeline.push({ realEstateOwnerName: real_estate });
     }
     if (currency !== "all") {
       matchPipeline.push({ currency });
