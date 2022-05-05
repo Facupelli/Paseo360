@@ -43,7 +43,10 @@ export default function PropertyCard({ property }) {
                   <span>{property.bathrooms}</span> baños
                 </p>
               </div>
-              <div className={s.real_estate}>HABITAR</div>
+              <div className={s.real_estate}>
+                {/* <p>{property.realEstateOwner}</p> */}
+                <p>{property.realEstateOwnerName}</p>
+              </div>
             </div>
           </div>
         </div>

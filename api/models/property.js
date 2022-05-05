@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const propertySchema = new mongoose.Schema({
   realEstateOwner: { type: mongoose.Schema.Types.ObjectId, ref: "RealEstate" },
+  realEstateOwnerName: { type: String },
   name: {
     type: String,
     required: true,

@@ -9,7 +9,7 @@ const getAllProperties = async (req, res) => {
       operation_type = "all",
       departamento = "all",
       real_estate = "all",
-      currency = 'all',
+      currency = "all",
       price_start,
       price_end,
     } = req.query;
@@ -28,7 +28,7 @@ const getAllProperties = async (req, res) => {
     if (departamento !== "all") {
       matchPipeline.push({ departamento });
     }
-    if (currency !== 'all') {
+    if (currency !== "all") {
       matchPipeline.push({ currency });
     }
 
@@ -96,8 +96,8 @@ const postProperty = async (req, res) => {
 
     if (user) {
       const property = new Property(data);
-
       const newProperty = await property.save();
+
       res.status(201).json(newProperty); // 201 succes when creating
     }
   } catch (e) {
