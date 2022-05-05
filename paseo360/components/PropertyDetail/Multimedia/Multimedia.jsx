@@ -31,32 +31,41 @@ export default function Multimedia({
         <button>Video</button>
         <button>Fotos 360°</button>
       </div>
-      <div className={s.main_image}>
-        <div>
+      <div className={s.media_container}>
+        <div className={s.main_image}>
           {images.length > 0 && (
             <Image
               src={images[imageIndex]}
               alt={images[imageIndex]}
               layout="fill"
               objectFit="contain"
-              style={{ borderRadius: 5 }}
+              style={{ borderRadius: 4 }}
             />
           )}
-          <div>
+          <div className={s.next_btn_container}>
             <button onClick={handleNextImage}>{">"}</button>
           </div>
         </div>
-        <div>
+        <div className={s.thumbs_container}>
           {images.length > 0 &&
-            images.map((image) => (
-              <Image
+            images.map((image, i) => (
+              <div
                 key={image}
-                src={image}
-                alt={image}
-                width={330}
-                height={127}
-                objectFit="cover"
-              />
+                className={
+                  i === imageIndex ? s.img_container_active : s.img_container
+                }
+              >
+                <Image
+                  src={image}
+                  alt={image}
+                  width={210}
+                  height={100}
+                  objectFit="cover"
+                  style={{
+                    borderRadius: 4,
+                  }}
+                />
+              </div>
             ))}
         </div>
       </div>

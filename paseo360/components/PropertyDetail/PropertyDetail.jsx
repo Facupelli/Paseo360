@@ -1,9 +1,15 @@
+import Multimedia from "./Multimedia/Multimedia";
 import s from "./PropertyDetail.module.scss";
 
 export default function PropertyDetail({ property }) {
   return (
     <div className={s.container}>
-      <div>
+      <Multimedia
+        propertyName={property.name}
+        propertyImages={property.images}
+        tour_images={property.tour_images}
+      />
+      <div className={s.info}>
         <div className={s.price}>
           <p>{property.price}</p>
           <p>{property.currency}</p>

@@ -9,10 +9,10 @@
     justify-content: flex-end;
     gap: 0.5rem;
 
-    p{
-        margin-right: auto;
-        font-weight: 500;
-        font-size: 1.5rem;
+    p {
+      margin-right: auto;
+      font-weight: 500;
+      font-size: 1.5rem;
     }
 
     button {
@@ -20,29 +20,44 @@
     }
   }
 
-  .main_image {
+  .media_container {
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 79.5% 19.5%;
+    column-gap: 1%;
     height: 380px;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
 
-    > div {
-      &:first-child {
-        position: relative;
-        background-color: red;
+    .main_image {
+      position: relative;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 
-        > div {
-          position: absolute;
-          top: 50%;
-          right: 15px;
-        }
+      .next_btn_container {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+      }
+    }
+
+    .thumbs_container {
+      margin: 0;
+      padding: 0.2rem;
+      overflow-y: hidden;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+      .img_container,
+      .img_container_active {
+        margin-bottom: .5rem;
       }
 
-      &:last-child {
-        background-color: aqua;
-        margin: 0;
-        padding: 0;
-        overflow-y: hidden;
+      .img_container_active {
+        border: 2px solid aqua ;
+        border-radius: .4rem;
+      }
+
+      .img_container {
+        border: 2px solid white ;
       }
     }
   }

@@ -1,4 +1,5 @@
-import '../styles/globals.css'
+import '../styles/global.scss'
+
 import axios from 'axios'
 
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001/";
