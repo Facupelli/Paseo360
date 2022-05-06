@@ -40,6 +40,7 @@ export default function PropertyFilter({
     if (price_end) {
       url = `${url}&price_end=${price_end}`;
     }
+    console.log(url)
     axios
       .get(url)
       .then((res) => {
@@ -54,9 +55,13 @@ export default function PropertyFilter({
 
   const handleChangeSelect = (e, field) => {
     methods.setValue(field, e.target.value);
-    setFilters(prev => ({...prev, [field]: e.target.value}))
+    setFilters((prev) => ({ ...prev, [field]: e.target.value }));
     methods.handleSubmit(onSubmit)();
   };
+
+  const handleChangeInput = (e, field) => {
+    setFilters((prev) => ({...prev, [field]: e.target.value}))
+  } 
 
   const handleResetFilters = () => {
     setLoading(true);
@@ -145,6 +150,7 @@ export default function PropertyFilter({
               id="price_start"
               {...methods.register("price_start")}
               placeholder="precio"
+              onChange={(e)=>handleChangeInput(e, "price_start")}
             />
             <label htmlFor="price_end">Precio hasta:</label>
             <input
@@ -152,6 +158,7 @@ export default function PropertyFilter({
               id="price_end"
               {...methods.register("price_end")}
               placeholder="precio"
+              onChange={(e)=>handleChangeInput(e, "price_end")}
             />
             <div>
               <select
@@ -165,6 +172,9 @@ export default function PropertyFilter({
                 <option value="USD">Dólares</option>
               </select>
             </div>
+            <div className={s.search_btn_container}>
+              <button>Buscar</button>
+            </div>
           </div>
 
           {/* {!showMoreFilter && (
@@ -176,11 +186,11 @@ export default function PropertyFilter({
           )} */}
 
           {/* {showMoreFilter && ( */}
-            <MoreFilters setShowMoreFilters={setShowMoreFilters} />
+          <MoreFilters setShowMoreFilters={setShowMoreFilters} />
           {/*  )} */}
 
-          <div className={s.search_btn_container}>
-            <button>Buscar</button>
+          <div className={s.clean_btn_container}>
+            {/* <button>Buscar</button> */}
             <button type="button" onClick={handleResetFilters}>
               Limpiar Filtros
             </button>
