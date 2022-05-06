@@ -7,7 +7,7 @@ export default function loadingHOC(WrappedComponent, loadingMessage) {
     const setLoadingState = (isComponentLoading) => {
       setLoading(isComponentLoading);
     };
-
+    
     return (
       <>
         {isLoading && <p>{loadingMessage}</p>}
