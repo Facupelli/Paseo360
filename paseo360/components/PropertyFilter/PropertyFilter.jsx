@@ -11,6 +11,7 @@ export default function PropertyFilter({
   setProperties,
   setLoading,
   realEstates,
+  setFilters,
 }) {
   const [showMoreFilter, setShowMoreFilters] = useState(false);
 
@@ -51,8 +52,9 @@ export default function PropertyFilter({
       });
   };
 
-  const handleChangeSelect = (e) => {
-    methods.setValue("property_type", e.target.value);
+  const handleChangeSelect = (e, field) => {
+    methods.setValue(field, e.target.value);
+    setFilters(prev => ({...prev, [field]: e.target.value}))
     methods.handleSubmit(onSubmit)();
   };
 
@@ -81,7 +83,7 @@ export default function PropertyFilter({
               id="type"
               defaultValue="all"
               {...methods.register("property_type")}
-              onChange={(e) => handleChangeSelect(e)}
+              onChange={(e) => handleChangeSelect(e, "property_type")}
             >
               <option value="all">Todos</option>
               <option value="Casa">Casa</option>
@@ -96,6 +98,7 @@ export default function PropertyFilter({
               id="operation"
               defaultValue="all"
               {...methods.register("operation_type")}
+              onChange={(e) => handleChangeSelect(e, "operation_type")}
             >
               <option value="all">Todos</option>
               <option value="Alquiler">Alquiler</option>
@@ -106,6 +109,7 @@ export default function PropertyFilter({
               id="departamento"
               defaultValue="all"
               {...methods.register("departamento")}
+              onChange={(e) => handleChangeSelect(e, "departamento")}
             >
               <option value="all">Todos</option>
               {departamentos &&
@@ -122,6 +126,7 @@ export default function PropertyFilter({
               id="real_estate"
               defaultValue="all"
               {...methods.register("real_estate")}
+              onChange={(e) => handleChangeSelect(e, "real_estate")}
             >
               <option value="all">Todos</option>
               {realEstates &&
@@ -153,6 +158,7 @@ export default function PropertyFilter({
                 name="currency"
                 defaultValue="all"
                 {...methods.register("currency")}
+                onChange={(e) => handleChangeSelect(e, "currency")}
               >
                 <option value="all">Todos</option>
                 <option value="ARS">Pesos</option>

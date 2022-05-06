@@ -13,6 +13,16 @@ const PropertyListWithLoader = loadingHOC(PropertyList, "Loading...");
 
 export default function Home() {
   const [properties, setProperties] = useState([]);
+  const [filters, setFilters] = useState({
+    property_type: "all",
+    operation_type: "all",
+    departamento: "all",
+    real_estate: "all",
+    currency: "all",
+    price_start: "",
+    price_end: "",
+    order: "",
+  });
   const [realEstates, setRealEstates] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -41,13 +51,14 @@ export default function Home() {
 
       <main className={s.main}>
         <NavBar route="home" />
-        <OrderBy />
+        <OrderBy setFilters={setFilters} filters={filters} setProperties={setProperties}/>
         <div className={s.grid_container}>
           <div>
             <PropertyFilter
               setProperties={setProperties}
               setLoading={setLoading}
               realEstates={realEstates}
+              setFilters={setFilters}
             />
           </div>
           <div>
