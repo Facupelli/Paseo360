@@ -18,14 +18,14 @@
       display: grid;
       grid-template-columns: 40% 60%;
       align-items: center;
-      row-gap: 0.5rem;
+      row-gap: 1rem;
     }
 
     .price_range {
       margin: 1rem 0rem;
       display: grid;
       grid-template-columns: 40% 60%;
-      row-gap: 0.5rem;
+      row-gap: 1rem;
       align-items: center;
 
       > div {

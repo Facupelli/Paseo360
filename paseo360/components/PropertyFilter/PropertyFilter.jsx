@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { departamentos } from "assets/departamentos";
 import s from "./PropertyFilter.module.scss";
 import { FormProvider, useForm } from "react-hook-form";
@@ -13,12 +12,6 @@ export default function PropertyFilter({
   realEstates,
   setFilters,
 }) {
-  const [showMoreFilter, setShowMoreFilters] = useState(false);
-
-  const handleShowMoreFilter = () => {
-    setShowMoreFilters(true);
-  };
-
   const methods = useForm();
 
   const onSubmit = async (data) => {
@@ -40,7 +33,7 @@ export default function PropertyFilter({
     if (price_end) {
       url = `${url}&price_end=${price_end}`;
     }
-    console.log(url)
+    console.log(url);
     axios
       .get(url)
       .then((res) => {
@@ -60,8 +53,8 @@ export default function PropertyFilter({
   };
 
   const handleChangeInput = (e, field) => {
-    setFilters((prev) => ({...prev, [field]: e.target.value}))
-  } 
+    setFilters((prev) => ({ ...prev, [field]: e.target.value }));
+  };
 
   const handleResetFilters = () => {
     setLoading(true);
@@ -150,7 +143,7 @@ export default function PropertyFilter({
               id="price_start"
               {...methods.register("price_start")}
               placeholder="precio"
-              onChange={(e)=>handleChangeInput(e, "price_start")}
+              onChange={(e) => handleChangeInput(e, "price_start")}
             />
             <label htmlFor="price_end">Precio hasta:</label>
             <input
@@ -158,7 +151,7 @@ export default function PropertyFilter({
               id="price_end"
               {...methods.register("price_end")}
               placeholder="precio"
-              onChange={(e)=>handleChangeInput(e, "price_end")}
+              onChange={(e) => handleChangeInput(e, "price_end")}
             />
             <div>
               <select
@@ -177,20 +170,9 @@ export default function PropertyFilter({
             </div>
           </div>
 
-          {/* {!showMoreFilter && (
-            <div className={s.showmore_btn_container}>
-              <button type="button" onClick={handleShowMoreFilter}>
-                Más filtros<FontAwesomeIcon icon={faArrowDown} style={{ width: "18px", height: "18px" }} />
-              </button>
-            </div>
-          )} */}
-
-          {/* {showMoreFilter && ( */}
-          <MoreFilters setShowMoreFilters={setShowMoreFilters} />
-          {/*  )} */}
+          <MoreFilters />
 
           <div className={s.clean_btn_container}>
-            {/* <button>Buscar</button> */}
             <button type="button" onClick={handleResetFilters}>
               Limpiar Filtros
             </button>
