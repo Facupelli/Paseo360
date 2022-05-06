@@ -5,7 +5,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import MoreFilters from "./MoreFilters/MoreFilters";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAdd } from "@fortawesome/free-solid-svg-icons";
+import { faAdd, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 export default function PropertyFilter({
   setProperties,
@@ -161,17 +161,17 @@ export default function PropertyFilter({
             </div>
           </div>
 
-          {!showMoreFilter && (
+          {/* {!showMoreFilter && (
             <div className={s.showmore_btn_container}>
               <button type="button" onClick={handleShowMoreFilter}>
-                Más Filtros <FontAwesomeIcon icon={faAdd} style={{width: "1rem"}} />
+                Más filtros<FontAwesomeIcon icon={faArrowDown} style={{ width: "18px", height: "18px" }} />
               </button>
             </div>
-          )}
+          )} */}
 
-          {showMoreFilter && (
+          {/* {showMoreFilter && ( */}
             <MoreFilters setShowMoreFilters={setShowMoreFilters} />
-          )}
+          {/*  )} */}
 
           <div className={s.search_btn_container}>
             <button>Buscar</button>
