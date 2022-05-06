@@ -1,9 +1,12 @@
-@import '../styles/app.scss';
+@import "../styles/app.scss";
 
 .main {
   > div {
     @include app_width;
-    margin-top: 2rem;
+  }
+
+  .grid_container {
+    margin-top: 1rem;
     display: grid;
     grid-template-columns: 30% 68%;
     gap: 2%;
