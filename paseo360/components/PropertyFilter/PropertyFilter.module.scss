@@ -3,7 +3,7 @@
 .container {
   border-radius: 0.2rem;
   box-shadow: rgba(56, 112, 164, 0.171) 0px 0px 3px 1px;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
 
   form {
     select {
@@ -54,13 +54,23 @@
 
     .search_btn_container {
       margin-top: 0.5rem;
-      // display: flex;
-      // gap: 0.5rem;
-      // justify-content: flex-end;
 
       button {
         @include button;
         width: 100%;
+      }
+    }
+
+    .clean_btn_container {
+      border-top: 1px solid $blue_2;
+      padding-top: 1rem;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        @include button;
+        width: 50%;
       }
     }
   }

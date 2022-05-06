@@ -1,5 +1,68 @@
-.hide_filters {
-  text-align: end;
-  font-weight: 700;
-  cursor: pointer;
+@import "../../../styles/app.scss";
+
+@mixin input_button {
+  background-color: $blue_4;
+  font-weight: 600;
+  border: none;
+  padding: 0.5rem;
+  box-shadow: $blue_3 1px 1px 2px;
+
+  &:hover {
+    background-color: $blue_3;
+    box-shadow: none;
+    cursor: pointer;
+  }
+}
+
+.container {
+  .hide_filters {
+    text-align: end;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  > div {
+    padding: 0.5rem 0;
+    > div {
+      padding-bottom: 0.2rem;
+      &:first-child {
+        border-bottom: 1px solid $blue_2;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  .antique_input_container {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    input {
+      width: 50%;
+      @include input_button;
+    }
+  }
+
+  .ambiences_input_container {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+
+    input {
+      @include input_button;
+    }
+  }
+
+  .range_container {
+    width: 60%;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    row-gap: 0.5rem;
+    align-items: center;
+
+    input {
+      @include filter_input($blue_4);
+    }
+  }
 }

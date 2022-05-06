@@ -26,11 +26,11 @@ $blue_5: #91e5f6;
   }
 }
 
-@mixin filter_input {
+@mixin filter_input($border_color: $blue_2) {
   padding: 0.4rem;
   border-radius: 0.2rem;
   font-weight: 600;
-  border: 1px solid $blue_2;
+  border: 1px solid $border_color;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
     rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 
