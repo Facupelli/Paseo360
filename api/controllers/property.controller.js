@@ -12,6 +12,7 @@ const getAllProperties = async (req, res) => {
       currency = "all",
       price_start,
       price_end,
+      order,
     } = req.query;
 
     // const properties = await Property.find();
@@ -50,17 +51,36 @@ const getAllProperties = async (req, res) => {
 
     console.log("PIPELINE", matchPipeline);
 
+    let aggregatePipeline = [
+      {
+        $match: {
+          $and: matchPipeline,
+        },
+      },
+    ];
+
+    if (matchPipeline.length > 0 && order !== "relevants") {
+      aggregatePipeline.push({
+        $sort: { price: order === "price_asc" ? 1 : -1, _id: 1 },
+      });
+    }
+
+    console.log("ORDER", order);
+
     let properties = [];
 
-    matchPipeline.length > 0
-      ? (properties = await Property.aggregate([
-          {
-            $match: {
-              $and: matchPipeline,
-            },
-          },
-        ]))
-      : (properties = await Property.find());
+    if (matchPipeline.length > 0) {
+      properties = await Property.aggregate(aggregatePipeline);
+    } else {
+      if (order) {
+        properties = await Property.find().sort({
+          price: order === "price_asc" ? 1 : -1,
+          _id: 1,
+        });
+      } else {
+        properties = await Property.find();
+      }
+    }
 
     if (!properties) {
       res.status(404).json({ error: "Not Found Any Properties" });
