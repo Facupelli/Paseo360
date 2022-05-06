@@ -1,7 +1,9 @@
+@import '../../styles/app.scss';
+
 .nav_container {
-  background-color: gray;
-  border-bottom: 1px solid black;
-  padding: 1rem;
+  background-color: $blue_1;
+  padding: 0rem 1rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
   display: flex;
   align-items: center;
@@ -12,18 +14,33 @@
     width: 40%;
     height: 40%;
   }
+
+  p{
+    font-weight: 700;
+    color: white;
+    font-size: 1.6rem;
+    margin-left: 1rem;
+  }
 }
 
 .pages_container {
   margin-left: auto;
   margin-right: 1rem;
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
+  color:$blue_5;
+  font-weight: 500;
 
   > span {
+    padding: 1.5rem .5rem;
     &:hover {
       cursor: pointer;
       color: white;
     }
+  }
+
+  .active{
+    border-bottom: 3px solid $blue_5;
+
   }
 }

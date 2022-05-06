@@ -21,7 +21,6 @@ export default function PropertyFilter({
   const methods = useForm();
 
   const onSubmit = async (data) => {
-    console.log('ON SUBMIT')
     setLoading(true);
     console.log(data);
     const {

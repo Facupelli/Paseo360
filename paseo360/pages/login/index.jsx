@@ -3,6 +3,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import Link from "next/link";
+import { NavBar } from "components/NavBar/NavBar";
 
 const schema = yup.object().shape({
   email: yup.string().required().email(),
@@ -33,6 +34,7 @@ export default function Login() {
 
   return (
     <div>
+      <NavBar route="login" />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <input

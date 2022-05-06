@@ -1,10 +1,8 @@
-
-
-$blue_1: #133C55;
-$blue_2: #386FA4;
-$blue_3: #59A5D8;
-$blue_4: #84D2F6;
-
+$blue_1: #133c55;
+$blue_2: #386fa4;
+$blue_3: #59a5d8;
+$blue_4: #84d2f6;
+$blue_5: #91e5f6;
 
 @mixin app_width($max-width: 1100px) {
   max-width: $max-width;
@@ -14,26 +12,26 @@ $blue_4: #84D2F6;
 
 @mixin filter_select {
   padding: 0.4rem;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   font-weight: 600;
 
-  &:focus{
+  &:focus {
     outline: none;
     border: 1px solid $blue_3;
-    border-radius: .2rem;
+    border-radius: 0.2rem;
   }
 }
 
 @mixin filter_input {
   padding: 0.4rem;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   font-weight: 600;
   border: 1px solid gray;
 
-  &:focus{
+  &:focus {
     outline: none;
     border: 1px solid $blue_3;
-    border-radius: .2rem;
+    border-radius: 0.2rem;
   }
 }
 
@@ -45,7 +43,7 @@ $blue_4: #84D2F6;
   cursor: pointer;
 }
 
-@mixin button($bg_color: $blue_1, $bg_color_hover: $blue_2){
+@mixin button($bg_color: $blue_1, $bg_color_hover: $blue_2) {
   padding: 0.5rem 1rem;
   background-color: $bg_color;
   border-radius: 0.2rem;
@@ -54,7 +52,7 @@ $blue_4: #84D2F6;
   font-weight: 500;
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     background-color: $bg_color_hover;
   }
 }

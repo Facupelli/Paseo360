@@ -39,7 +39,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <NavBar />
+        <NavBar route="home" />
         <div>
           <div>
             <PropertyFilter
