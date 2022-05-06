@@ -22,7 +22,13 @@ export default function PropertyCard({ property }) {
             </Link>
             <p className={s.adress}>{property.adress}</p>
             <div className={s.price}>
-              <p>{property.price}</p>
+              <p>
+                {new Intl.NumberFormat("es-AR", {
+                  style: "currency",
+                  currency: "ARS",
+                  maximumSignificantDigits: 12
+                }).format(property.price)}
+              </p>
               <p>{property.currency}</p>
               <p>{property.operation_type}</p>
             </div>

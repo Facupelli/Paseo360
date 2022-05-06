@@ -1,32 +1,28 @@
 @import "../../../styles/app.scss";
 
 @mixin input_button {
-  background-color: $blue_4;
+  background-color: transparent;
   font-weight: 600;
-  border: none;
+  border: 1px solid $blue_3;
   padding: 0.5rem;
-  box-shadow: $blue_3 0px 1px 2px;
+  // box-shadow: $blue_3 1px 1px 1px;
 
   &:hover {
-    background-color: $blue_5;
-    // box-shadow: none;
+    border: 1px solid $blue_4;
+    box-shadow: none;
     cursor: pointer;
   }
 }
 
 .container {
-  .hide_filters {
-    text-align: end;
-    font-weight: 700;
-    cursor: pointer;
-  }
+  margin-top: 3rem;
 
   > div {
     padding: 0.5rem 0;
     > div {
       padding-bottom: 0.2rem;
       &:first-child {
-        border-bottom: 1px solid $blue_2;
+        border-bottom: 1px solid $blue_3;
         margin-bottom: 1rem;
       }
     }
@@ -62,7 +58,7 @@
     align-items: center;
 
     input {
-      @include filter_input($blue_4);
+      @include filter_input($blue_3);
     }
   }
 }
