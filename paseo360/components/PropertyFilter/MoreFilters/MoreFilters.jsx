@@ -144,7 +144,7 @@ export default function MoreFilters({ setFilters }) {
           <input
             type="checkbox"
             id="ambience+6"
-            value="+6"
+            value="more6"
             {...register("ambiences")}
           />
           <label htmlFor="ambience+6">+6</label>
@@ -186,7 +186,7 @@ export default function MoreFilters({ setFilters }) {
           <input
             type="checkbox"
             id="bedroom+5"
-            value="+5"
+            value="more5"
             {...register("bedrooms")}
           />
           <label htmlFor="bedroom+5">+5</label>
@@ -221,7 +221,7 @@ export default function MoreFilters({ setFilters }) {
           <input
             type="checkbox"
             id="bathroom+4"
-            value="4"
+            value="more4"
             {...register("bathrooms")}
           />
           <label htmlFor="bathroom+4">4</label>
@@ -263,7 +263,7 @@ export default function MoreFilters({ setFilters }) {
           <input
             type="checkbox"
             id="garage+5"
-            value="+5"
+            value="more5"
             {...register("garage")}
           />
           <label htmlFor="garage+5">+5</label>

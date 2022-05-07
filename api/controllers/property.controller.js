@@ -13,9 +13,17 @@ const getAllProperties = async (req, res) => {
       price_start,
       price_end,
       order,
+      antiquity,
+      ambiences,
+      bedrooms,
+      bathrooms,
+      garage,
+      total_area_start,
+      total_area_end,
+      cover_area_start,
+      cover_area_end,
     } = req.query;
 
-    // const properties = await Property.find();
     //PIPELINE
     let matchPipeline = [];
 
@@ -46,6 +54,42 @@ const getAllProperties = async (req, res) => {
       }
       if (price_end && !price_start) {
         matchPipeline.push({ price: { $lte: Number(price_end) } });
+      }
+    }
+
+    if (ambiences) {
+      if (ambiences === "more6") {
+        matchPipeline.push({ ambiences: { $gte: 6 } });
+      } else {
+        const ambiencesArray = Array.from(ambiences.split(",").map(Number));
+        matchPipeline.push({ ambiences: { $in: ambiencesArray } });
+      }
+    }
+
+    if (bedrooms) {
+      if (bedrooms === "more5") {
+        matchPipeline.push({ bedrooms: { $gte: 5 } });
+      } else {
+        const bedroomsArray = Array.from(bedrooms.split(",").map(Number));
+        matchPipeline.push({ bedrooms: { $in: bedroomsArray } });
+      }
+    }
+
+    if (bathrooms) {
+      if (bathrooms === "more4") {
+        matchPipeline.push({ bathrooms: { $gte: 4 } });
+      } else {
+        const bathroomsArray = Array.from(bathrooms.split(",").map(Number));
+        matchPipeline.push({ bathrooms: { $in: bathroomsArray } });
+      }
+    }
+
+    if (garage) {
+      if (garage === "more5") {
+        matchPipeline.push({ garage: { $gte: 5 } });
+      } else {
+        const garageArray = Array.from(garage.split(",").map(Number));
+        matchPipeline.push({ garage: { $in: garageArray } });
       }
     }
 
