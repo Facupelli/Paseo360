@@ -1,6 +1,9 @@
 @import "../styles/app.scss";
 
 .main {
+  background-color: rgba(40, 102, 143, 0.103);
+
+
   > div {
     @include app_width;
   }
@@ -8,7 +11,16 @@
   .grid_container {
     margin-top: 1rem;
     display: grid;
-    grid-template-columns: 30% 68%;
+    grid-template-columns: 28% 70%;
     gap: 2%;
+
+    >div{
+      &:last-child{
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: .2rem;
+        box-shadow: rgba(40, 102, 143, 0.034) 0px 0px 5px 1px;
+      }
+    }
   }
 }
