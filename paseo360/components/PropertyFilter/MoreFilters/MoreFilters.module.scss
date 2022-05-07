@@ -37,6 +37,7 @@
     input {
       width: 50%;
       @include input_button;
+      border-radius: 1rem;
     }
   }
 
@@ -47,6 +48,7 @@
 
     input {
       @include input_button;
+      border-radius: 1rem;
     }
   }
 

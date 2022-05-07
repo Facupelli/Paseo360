@@ -6,19 +6,15 @@
   padding: 1rem;
 
   form {
-    select {
-      @include filter_select;
-    }
-
-    input {
-      @include filter_input;
-    }
-
     .first_filters {
       display: grid;
       grid-template-columns: 40% 60%;
       align-items: center;
       row-gap: 1rem;
+
+      select {
+        @include filter_select;
+      }
     }
 
     .price_range {
@@ -27,6 +23,10 @@
       grid-template-columns: 40% 60%;
       row-gap: 1rem;
       align-items: center;
+
+      input {
+        @include filter_input;
+      }
 
       > div {
         grid-column: 2;
