@@ -6,6 +6,7 @@ import s from "./MoreFilters.module.scss";
 export default function MoreFilters({ setFilters }) {
   const {
     register,
+    setValue,
     watch,
     formState: { errors },
   } = useFormContext();
@@ -19,26 +20,36 @@ export default function MoreFilters({ setFilters }) {
   const total_end = watch("total_area_end");
   const cover_start = watch("cover_area_start");
   const cover_end = watch("cover_area_end");
-  
 
   useEffect(() => {
     setFilters((prev) => ({ ...prev, antiquity }));
   }, [antiquity]);
 
+  const checkFilterValue = (filterName, filterValue, lastValue) => {
+    if (filterValue) {
+      if (filterValue.includes(lastValue)) {
+        setFilters((prev) => ({ ...prev, [filterName]: lastValue }));
+        setValue(filterName, lastValue);
+      } else {
+        setFilters((prev) => ({ ...prev, [filterName]: filterValue }));
+      }
+    }
+  };
+
   useEffect(() => {
-    setFilters((prev) => ({ ...prev, ambiences }));
+    checkFilterValue("ambiences", ambiences, "more6");
   }, [ambiences]);
 
   useEffect(() => {
-    setFilters((prev) => ({ ...prev, bedrooms }));
+    checkFilterValue("bedrooms", bedrooms, "more5");
   }, [bedrooms]);
 
   useEffect(() => {
-    setFilters((prev) => ({ ...prev, bathrooms }));
+    checkFilterValue("bathrooms", bathrooms, "more4");
   }, [bathrooms]);
 
   useEffect(() => {
-    setFilters((prev) => ({ ...prev, garage }));
+    checkFilterValue("garage", garage, "more5");
   }, [garage]);
 
   useEffect(() => {
@@ -224,7 +235,7 @@ export default function MoreFilters({ setFilters }) {
             value="more4"
             {...register("bathrooms")}
           />
-          <label htmlFor="bathroom+4">4</label>
+          <label htmlFor="bathroom+4">+4</label>
         </div>
       </div>
       <div>

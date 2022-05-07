@@ -35,6 +35,8 @@ export default function Home() {
   const [realEstates, setRealEstates] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  console.log("FILTERS", filters.ambiences);
+
   useEffect(() => {
     setLoading(true);
     axios
