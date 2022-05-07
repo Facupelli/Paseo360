@@ -1,10 +1,14 @@
-import { departamentos } from "assets/departamentos";
-import s from "./PropertyFilter.module.scss";
-import { FormProvider, useForm } from "react-hook-form";
-import MoreFilters from "./MoreFilters/MoreFilters";
 import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAdd, faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import { FormProvider, useForm } from "react-hook-form";
+
+import { departamentos } from "assets/departamentos";
+import MoreFilters from "./MoreFilters/MoreFilters";
+
+import s from "./PropertyFilter.module.scss";
+
+dayjs.extend(customParseFormat);
 
 export default function PropertyFilter({
   setProperties,
@@ -13,6 +17,8 @@ export default function PropertyFilter({
   setFilters,
 }) {
   const methods = useForm();
+
+  const date = dayjs().format("DD/MM/YYYY");
 
   const onSubmit = async (data) => {
     setLoading(true);

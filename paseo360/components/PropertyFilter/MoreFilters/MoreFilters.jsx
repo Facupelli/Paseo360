@@ -1,8 +1,5 @@
 import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
-import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
-dayjs.extend(customParseFormat);
 
 import s from "./MoreFilters.module.scss";
 
@@ -23,7 +20,6 @@ export default function MoreFilters({ setFilters }) {
   const cover_start = watch("cover_area_start");
   const cover_end = watch("cover_area_end");
   
-  const date = dayjs().format("DD/MM/YYYY");
 
   useEffect(() => {
     setFilters((prev) => ({ ...prev, antiquity }));
