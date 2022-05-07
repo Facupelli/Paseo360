@@ -5,6 +5,10 @@
   padding: 1rem;
 
   form {
+    label {
+      font-weight: 400;
+    }
+
     .first_filters {
       display: grid;
       grid-template-columns: 40% 60%;

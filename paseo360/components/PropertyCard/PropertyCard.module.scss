@@ -1,19 +1,23 @@
-@import '../../styles//app.scss';
+@import "../../styles//app.scss";
 
 .card_container {
   height: 210px;
-  margin-bottom: 2rem;
+  margin: 1rem 0;
   display: flex;
-  border-radius: .2rem;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
-  // border: 1px solid $blue_3;
+  border-radius: 0.2rem;
+  // box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  // border-bottom: 2px solid rgba(40, 102, 143, 0.103);
+
+  &:hover {
+    cursor: pointer;
+  }
 
   .image_container {
-    background-color: aqua;
+    // background-color: aqua;
 
-    .image{
-      border-bottom-left-radius: .2rem;
-      border-top-left-radius: .2rem;
+    .image {
+      border-bottom-left-radius: 0.2rem;
+      border-top-left-radius: 0.2rem;
     }
   }
 
@@ -39,12 +43,12 @@
       display: flex;
       gap: 0.5rem;
 
-      >p{
+      > p {
         margin-top: 1rem;
         font-size: 1.4rem;
         font-weight: 500;
       }
-      >p:last-child{
+      > p:last-child {
         font-weight: 400;
       }
     }

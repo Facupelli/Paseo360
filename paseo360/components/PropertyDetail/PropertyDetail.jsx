@@ -28,32 +28,32 @@ export default function PropertyDetail({ property }) {
         </div>
         <div className={s.info}>
           <p>
-            <FontAwesomeIcon icon={faCalendar} />{" "}
-            <span>{property.year_built}</span> años de antiguedad{" "}
+            <FontAwesomeIcon icon={faCalendar} width={20} />
+            <span>{property.year_built}</span> años de antiguedad
           </p>
           <p>
-            <FontAwesomeIcon icon={faUpRightAndDownLeftFromCenter} />{" "}
+            <FontAwesomeIcon icon={faUpRightAndDownLeftFromCenter} width={20} />
             <span>{property.total_area}m²</span> area total
           </p>
           <p>
-            <FontAwesomeIcon icon={faUpRightAndDownLeftFromCenter} />{" "}
+            <FontAwesomeIcon icon={faUpRightAndDownLeftFromCenter} width={20} />
             <span>{property.cover_area}m²</span> area cubierta
           </p>
           <p>
-            <FontAwesomeIcon icon={faHouseChimney} />{" "}
+            <FontAwesomeIcon icon={faHouseChimney} width={25} />
             <span>{property.ambiences}</span> ambientes
           </p>
           <p>
-            <FontAwesomeIcon icon={faToilet} />{" "}
+            <FontAwesomeIcon icon={faToilet} width={20} />
             <span>{property.bathrooms}</span> baños
           </p>
           <p>
-            <FontAwesomeIcon icon={faBed} /> <span>{property.bedrooms}</span>{" "}
-            dormitorios
+            <FontAwesomeIcon icon={faBed} width={25} />
+            <span>{property.bedrooms}</span> dormitorios
           </p>
           <p>
-            <FontAwesomeIcon icon={faCar} /> <span>{property.garage}</span>{" "}
-            coches
+            <FontAwesomeIcon icon={faCar} width={20} />
+            <span>{property.garage}</span> coches
           </p>
         </div>
       </div>
