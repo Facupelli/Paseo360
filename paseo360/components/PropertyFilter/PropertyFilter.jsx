@@ -170,7 +170,7 @@ export default function PropertyFilter({
             </div>
           </div>
 
-          <MoreFilters />
+          <MoreFilters setFilters={setFilters} />
 
           <div className={s.clean_btn_container}>
             <button type="button" onClick={handleResetFilters}>

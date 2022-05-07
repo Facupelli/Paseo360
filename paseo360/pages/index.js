@@ -22,6 +22,15 @@ export default function Home() {
     price_start: "",
     price_end: "",
     order: "",
+    antiquity: [],
+    ambiences: [],
+    bedrooms: [],
+    bathrooms: [],
+    garage: [],
+    total_area_start: "",
+    total_area_end: "",
+    cover_area_start: "",
+    cover_area_end: "",
   });
   const [realEstates, setRealEstates] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -51,7 +60,11 @@ export default function Home() {
 
       <main className={s.main}>
         <NavBar route="home" />
-        <OrderBy setFilters={setFilters} filters={filters} setProperties={setProperties}/>
+        <OrderBy
+          setFilters={setFilters}
+          filters={filters}
+          setProperties={setProperties}
+        />
         <div className={s.grid_container}>
           <div>
             <PropertyFilter

@@ -17,6 +17,23 @@
 .container {
   margin-top: 3rem;
 
+  label {
+    @include input_button;
+    font-size: 0.8rem;
+    text-align: center;
+    // width: 50%;
+    border-radius: 1rem;
+    background-color: white;
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  input[type="checkbox"]:checked + label {
+    background-color: $blue_4;
+  }
+
   > div {
     padding: 0.5rem 0;
     > div {
@@ -34,24 +51,20 @@
     flex-direction: column;
     gap: 0.5rem;
 
-    input {
+    label{
       width: 50%;
-      @include input_button;
-      border-radius: 1rem;
-      background-color: white;
     }
+
+    
   }
 
   .ambiences_input_container {
     margin-top: 1rem;
     display: flex;
     gap: 0.5rem;
+    // display: flex;
+    // flex-direction: column;
 
-    input {
-      @include input_button;
-      border-radius: 1rem;
-      background-color: white;
-    }
   }
 
   .range_container {
@@ -60,6 +73,12 @@
     grid-template-columns: 40% 60%;
     row-gap: 0.5rem;
     align-items: center;
+
+    label{
+      background-color: transparent;
+      border: none;
+      font-size: .9rem;
+    }
 
     input {
       @include filter_input($blue_3);
