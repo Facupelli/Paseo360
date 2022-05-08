@@ -31,11 +31,10 @@ export default function Home() {
     total_area_end: "",
     cover_area_start: "",
     cover_area_end: "",
+    date: "",
   });
   const [realEstates, setRealEstates] = useState(null);
   const [loading, setLoading] = useState(false);
-
-  console.log("FILTERS", filters.ambiences);
 
   useEffect(() => {
     setLoading(true);
@@ -77,11 +76,11 @@ export default function Home() {
             />
           </div>
           <div>
-            {/* {properties.length > 0 && !loading &&
+            {properties.length > 0 && !loading &&
               properties.map((property) => (
                 <PropertyCard key={property._id} property={property} />
               ))}
-            {properties.length === 0 && !loading && <p>No se encontraron propiedades</p>}
+            {/* {properties.length === 0 && !loading && <p>No se encontraron propiedades</p>}
             {loading && <p>Loading...</p>} */}
             <PropertyListWithLoader loading={loading} properties={properties} />
           </div>

@@ -22,6 +22,7 @@ const getAllProperties = async (req, res) => {
       total_area_end,
       cover_area_start,
       cover_area_end,
+      date,
     } = req.query;
 
     //PIPELINE
@@ -54,6 +55,22 @@ const getAllProperties = async (req, res) => {
       }
       if (price_end && !price_start) {
         matchPipeline.push({ price: { $lte: Number(price_end) } });
+      }
+    }
+
+    if (antiquity) {
+      if (antiquity === "more50") {
+        matchPipeline.push({ year_built: { $gte: Number(date) - 50 } });
+      } else if (antiquity === "5") {
+        matchPipeline.push({ year_built: { $gte: Number(date) - 5 } });
+      } else {
+        const antiquityArray = Array.from(antiquity.split("-")).map(Number);
+        matchPipeline.push({
+          year_built: {
+            $gte: Number(date) - antiquityArray[antiquityArray.length - 1],
+            $lte: Number(date) - antiquityArray[0],
+          },
+        });
       }
     }
 

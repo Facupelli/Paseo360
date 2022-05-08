@@ -1,7 +1,11 @@
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 import s from "./MoreFilters.module.scss";
+
+dayjs.extend(customParseFormat);
 
 export default function MoreFilters({ setFilters }) {
   const {
@@ -10,6 +14,12 @@ export default function MoreFilters({ setFilters }) {
     watch,
     formState: { errors },
   } = useFormContext();
+
+  const date = dayjs().format("DD/MM/YYYY");
+
+  useEffect(() => {
+    setFilters((prev) => ({ ...prev, date: date.split("/")[2] }));
+  }, []);
 
   const antiquity = watch("antiquity");
   const ambiences = watch("ambiences");
@@ -21,10 +31,6 @@ export default function MoreFilters({ setFilters }) {
   const cover_start = watch("cover_area_start");
   const cover_end = watch("cover_area_end");
 
-  useEffect(() => {
-    setFilters((prev) => ({ ...prev, antiquity }));
-  }, [antiquity]);
-
   const checkFilterValue = (filterName, filterValue, lastValue) => {
     if (filterValue) {
       if (filterValue.includes(lastValue)) {
@@ -35,6 +41,12 @@ export default function MoreFilters({ setFilters }) {
       }
     }
   };
+
+  useEffect(() => {
+    checkFilterValue("antiquity", antiquity, "more50");
+  }, [antiquity]);
+
+  console.log(antiquity)
 
   useEffect(() => {
     checkFilterValue("ambiences", ambiences, "more6");
@@ -75,38 +87,33 @@ export default function MoreFilters({ setFilters }) {
           <p>Antiguedad</p>
         </div>
         <div className={s.antique_input_container}>
-          <input
-            type="checkbox"
-            id="5"
-            value="Hasta 5 años"
-            {...register("antiquity")}
-          />
+          <input type="checkbox" id="5" value="5" {...register("antiquity")} />
           <label htmlFor="5">Hasta 5 años</label>
           <input
             type="checkbox"
             id="5-10"
-            value="Entre 5 y 10 años"
+            value="5-10"
             {...register("antiquity")}
           />
           <label htmlFor="5-10">Entre 5 y 10 años</label>
           <input
             type="checkbox"
             id="10-20"
-            value="Entre 10 y 20 años"
+            value="10-20"
             {...register("antiquity")}
           />
           <label htmlFor="10-20">Entre 10 y 20 años</label>
           <input
             type="checkbox"
             id="20-50"
-            value="Entre 20 y 50 años"
+            value="20-50"
             {...register("antiquity")}
           />
           <label htmlFor="20-50">Entre 20 y 50 años</label>
           <input
             type="checkbox"
             id="50"
-            value="Más de 50 años"
+            value="more50"
             {...register("antiquity")}
           />
           <label htmlFor="50">Más de 50 años</label>

@@ -1,6 +1,4 @@
 import axios from "axios";
-import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
 import { FormProvider, useForm } from "react-hook-form";
 
 import { departamentos } from "assets/departamentos";
@@ -8,7 +6,6 @@ import MoreFilters from "./MoreFilters/MoreFilters";
 
 import s from "./PropertyFilter.module.scss";
 
-dayjs.extend(customParseFormat);
 
 export default function PropertyFilter({
   setProperties,
@@ -17,8 +14,6 @@ export default function PropertyFilter({
   setFilters,
 }) {
   const methods = useForm();
-
-  const date = dayjs().format("DD/MM/YYYY");
 
   const onSubmit = async (data) => {
     setLoading(true);
