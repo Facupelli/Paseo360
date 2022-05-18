@@ -37,6 +37,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   // console.log('FILTERS.ANTIQUITY', filters.antiquity)
+  console.log(properties);
 
   useEffect(() => {
     setLoading(true);
@@ -44,6 +45,7 @@ export default function Home() {
       .get("/properties")
       .then((res) => {
         setProperties(res.data.properties);
+        console.log("set properties 1");
         setRealEstates(res.data.realEstates);
         setLoading(false);
       })
@@ -78,13 +80,12 @@ export default function Home() {
             />
           </div>
           <div>
-            {properties.length > 0 &&
+            {/* {properties.length > 0 &&
               !loading &&
               properties.map((property) => (
                 <PropertyCard key={property._id} property={property} />
               ))}
-            {/* {properties.length === 0 && !loading && <p>No se encontraron propiedades</p>}
-            {loading && <p>Loading...</p>} */}
+            <PropertyListWithLoader loading={loading} properties={properties} /> */}
             <PropertyListWithLoader loading={loading} properties={properties} />
           </div>
         </div>

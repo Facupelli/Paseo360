@@ -6,7 +6,6 @@ import MoreFilters from "./MoreFilters/MoreFilters";
 
 import s from "./PropertyFilter.module.scss";
 
-
 export default function PropertyFilter({
   setProperties,
   setLoading,
@@ -17,7 +16,7 @@ export default function PropertyFilter({
 
   const onSubmit = async (data) => {
     setLoading(true);
-    console.log('FORM DATA',data);
+    console.log("FORM DATA", data);
     const {
       property_type,
       operation_type,
@@ -26,19 +25,53 @@ export default function PropertyFilter({
       price_start,
       price_end,
       currency,
+      antiquity,
+      ambiences,
+      bedrooms,
+      bathrooms,
+      garage,
+      total_area_start,
+      total_area_end,
+      cover_area_start,
+      cover_area_end,
     } = data;
     let url = `/properties?property_type=${property_type}&operation_type=${operation_type}&departamento=${departamento}&real_estate=${real_estate}&currency=${currency}`;
+
     if (price_start) {
       url = `${url}&price_start=${price_start}`;
     }
     if (price_end) {
       url = `${url}&price_end=${price_end}`;
     }
+
+    if (antiquity) {
+      url = `${url}&antiquity=${antiquity}&date=2022`;
+    }
+    if (ambiences) {
+      url = `${url}&ambiences=${ambiences}`;
+    }
+    if (bedrooms) {
+      url = `${url}&bedrooms=${bedrooms}`;
+    }
+    if (bathrooms) {
+      url = `${url}&bathrooms=${bathrooms}`;
+    }
+    if (garage) {
+      url = `${url}&garage=${garage}`;
+    }
+    if (total_area_start) {
+      url = `${url}&total_area_start=${total_area_start}`;
+    }
+    if (total_area_end) {
+      url = `${url}&total_area_end=${total_area_end}`;
+    }
+
     console.log(url);
     axios
       .get(url)
       .then((res) => {
         setProperties(res.data.properties);
+        console.log('set properties 2')
         setLoading(false);
       })
       .catch((e) => {
@@ -63,6 +96,7 @@ export default function PropertyFilter({
       .get("/properties")
       .then((res) => {
         setProperties(res.data.properties);
+        console.log('set properties 3')
         setLoading(false);
         methods.reset();
       })
