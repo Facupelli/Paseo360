@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useFormContext } from "react-hook-form";
 
 import s from "./MoreFilters.module.scss";
@@ -31,54 +31,60 @@ export default function MoreFilters({ setFilters }) {
   const cover_start = watch("cover_area_start");
   const cover_end = watch("cover_area_end");
 
-  const checkFilterValue = (filterName, filterValue, lastValue) => {
+  const setFilterValue = (filterName, filterValue, lastValue) => {
     if (filterValue) {
       if (filterValue.includes(lastValue)) {
-        setFilters((prev) => ({ ...prev, [filterName]: lastValue }));
+        // setFilters((prev) => ({ ...prev, [filterName]: lastValue }));
         setValue(filterName, lastValue);
-      } else {
-        setFilters((prev) => ({ ...prev, [filterName]: filterValue }));
       }
     }
   };
 
   useEffect(() => {
-    checkFilterValue("antiquity", antiquity, "more50");
+    setFilterValue("antiquity", antiquity, "more50");
   }, [antiquity]);
 
-  console.log(antiquity)
+  // console.log("ANTIQUITY", antiquity, typeof antiquity);
 
   useEffect(() => {
-    checkFilterValue("ambiences", ambiences, "more6");
+    setFilterValue("ambiences", ambiences, "more6");
   }, [ambiences]);
 
   useEffect(() => {
-    checkFilterValue("bedrooms", bedrooms, "more5");
+    setFilterValue("bedrooms", bedrooms, "more5");
   }, [bedrooms]);
 
   useEffect(() => {
-    checkFilterValue("bathrooms", bathrooms, "more4");
+    setFilterValue("bathrooms", bathrooms, "more4");
   }, [bathrooms]);
 
   useEffect(() => {
-    checkFilterValue("garage", garage, "more5");
+    setFilterValue("garage", garage, "more5");
   }, [garage]);
 
-  useEffect(() => {
-    setFilters((prev) => ({
-      ...prev,
-      total_area_start: total_start,
-      total_area_end: total_end,
-    }));
-  }, [total_start, total_end]);
+  // useEffect(() => {
+  //   setFilters((prev) => ({
+  //     ...prev,
+  //     total_area_start: total_start,
+  //     total_area_end: total_end,
+  //   }));
+  // }, [total_start, total_end]);
 
-  useEffect(() => {
-    setFilters((prev) => ({
-      ...prev,
-      cover_area_start: cover_start,
-      cover_area_end: cover_end,
-    }));
-  }, [cover_start, cover_end]);
+  // useEffect(() => {
+  //   setFilters((prev) => ({
+  //     ...prev,
+  //     cover_area_start: cover_start,
+  //     cover_area_end: cover_end,
+  //   }));
+  // }, [cover_start, cover_end]);
+
+  const handleAntiquity = (e) => {
+    if (antiquity === e.target.value) {
+      setValue("antiquity", "");
+    } else {
+      setValue("antiquity", e.target.value);
+    }
+  };
 
   return (
     <div className={s.container}>
@@ -87,36 +93,46 @@ export default function MoreFilters({ setFilters }) {
           <p>Antiguedad</p>
         </div>
         <div className={s.antique_input_container}>
-          <input type="checkbox" id="5" value="5" {...register("antiquity")} />
-          <label htmlFor="5">Hasta 5 años</label>
-          <input
-            type="checkbox"
-            id="5-10"
+          <button
+            value="5"
+            type="button"
+            onClick={(e) => handleAntiquity(e)}
+            className={antiquity === "5" ? s.checked : ""}
+          >
+            Hasta 5 años
+          </button>
+          <button
             value="5-10"
-            {...register("antiquity")}
-          />
-          <label htmlFor="5-10">Entre 5 y 10 años</label>
-          <input
-            type="checkbox"
-            id="10-20"
+            type="button"
+            onClick={(e) => handleAntiquity(e)}
+            className={antiquity === "5-10" ? s.checked : ""}
+          >
+            Entre 5 y 10 años
+          </button>
+          <button
             value="10-20"
-            {...register("antiquity")}
-          />
-          <label htmlFor="10-20">Entre 10 y 20 años</label>
-          <input
-            type="checkbox"
-            id="20-50"
+            type="button"
+            onClick={(e) => handleAntiquity(e)}
+            className={antiquity === "10-20" ? s.checked : ""}
+          >
+            Entre 10 y 20 años
+          </button>
+          <button
             value="20-50"
-            {...register("antiquity")}
-          />
-          <label htmlFor="20-50">Entre 20 y 50 años</label>
-          <input
-            type="checkbox"
-            id="50"
+            type="button"
+            onClick={(e) => handleAntiquity(e)}
+            className={antiquity === "20-50" ? s.checked : ""}
+          >
+            Entre 20 y 50 años
+          </button>
+          <button
             value="more50"
-            {...register("antiquity")}
-          />
-          <label htmlFor="50">Más de 50 años</label>
+            type="button"
+            onClick={(e) => handleAntiquity(e)}
+            className={antiquity === "more50" ? s.checked : ""}
+          >
+            Más de 50 años
+          </button>
         </div>
       </div>
       <div>

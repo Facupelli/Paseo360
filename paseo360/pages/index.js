@@ -22,7 +22,7 @@ export default function Home() {
     price_start: "",
     price_end: "",
     order: "",
-    antiquity: [],
+    antiquity: "",
     ambiences: [],
     bedrooms: [],
     bathrooms: [],
@@ -35,6 +35,8 @@ export default function Home() {
   });
   const [realEstates, setRealEstates] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  // console.log('FILTERS.ANTIQUITY', filters.antiquity)
 
   useEffect(() => {
     setLoading(true);
@@ -76,7 +78,8 @@ export default function Home() {
             />
           </div>
           <div>
-            {properties.length > 0 && !loading &&
+            {properties.length > 0 &&
+              !loading &&
               properties.map((property) => (
                 <PropertyCard key={property._id} property={property} />
               ))}

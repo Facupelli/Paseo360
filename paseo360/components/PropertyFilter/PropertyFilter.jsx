@@ -17,7 +17,7 @@ export default function PropertyFilter({
 
   const onSubmit = async (data) => {
     setLoading(true);
-    console.log(data);
+    console.log('FORM DATA',data);
     const {
       property_type,
       operation_type,
@@ -49,12 +49,12 @@ export default function PropertyFilter({
 
   const handleChangeSelect = (e, field) => {
     methods.setValue(field, e.target.value);
-    setFilters((prev) => ({ ...prev, [field]: e.target.value }));
+    // setFilters((prev) => ({ ...prev, [field]: e.target.value }));
     methods.handleSubmit(onSubmit)();
   };
 
   const handleChangeInput = (e, field) => {
-    setFilters((prev) => ({ ...prev, [field]: e.target.value }));
+    // setFilters((prev) => ({ ...prev, [field]: e.target.value }));
   };
 
   const handleResetFilters = () => {
