@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 import axios from "axios";
 import { FormProvider, useForm } from "react-hook-form";
 
@@ -6,14 +8,17 @@ import MoreFilters from "./MoreFilters/MoreFilters";
 
 import s from "./PropertyFilter.module.scss";
 
+dayjs.extend(customParseFormat);
+
 export default function PropertyFilter({
   setProperties,
   setLoading,
   realEstates,
-  setFilters,
   setUrl,
 }) {
   const methods = useForm();
+
+  const date = dayjs().format("DD/MM/YYYY");
 
   const onSubmit = async (data) => {
     setLoading(true);
@@ -46,7 +51,7 @@ export default function PropertyFilter({
     }
 
     if (antiquity) {
-      url = `${url}&antiquity=${antiquity}&date=2022`;
+      url = `${url}&antiquity=${antiquity}&date=${date.split("/")[2]}`;
     }
     if (ambiences) {
       url = `${url}&ambiences=${ambiences}`;
@@ -83,13 +88,10 @@ export default function PropertyFilter({
 
   const handleChangeSelect = (e, field) => {
     methods.setValue(field, e.target.value);
-    // setFilters((prev) => ({ ...prev, [field]: e.target.value }));
     methods.handleSubmit(onSubmit)();
   };
 
-  const handleChangeInput = (e, field) => {
-    // setFilters((prev) => ({ ...prev, [field]: e.target.value }));
-  };
+  const handleChangeInput = (e, field) => {};
 
   const handleResetFilters = () => {
     setLoading(true);
@@ -205,7 +207,7 @@ export default function PropertyFilter({
             </div>
           </div>
 
-          <MoreFilters setFilters={setFilters} />
+          <MoreFilters />
 
           <div className={s.clean_btn_container}>
             <button type="button" onClick={handleResetFilters}>

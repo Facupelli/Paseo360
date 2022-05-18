@@ -4,8 +4,6 @@ import s from "./OrderBy.module.scss";
 
 export default function OrderBy({ setFilters, filters, setProperties, url }) {
   const handleChangeOrder = async (e) => {
-    setFilters((prev) => ({ ...prev, order: e.target.value }));
-
     let orderUrl = `${url}&order=${e.target.value}`;
 
     console.log(orderUrl);

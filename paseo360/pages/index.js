@@ -13,26 +13,26 @@ const PropertyListWithLoader = loadingHOC(PropertyList, "Loading...");
 
 export default function Home() {
   const [properties, setProperties] = useState([]);
-  const [filters, setFilters] = useState({
-    property_type: "all",
-    operation_type: "all",
-    departamento: "all",
-    real_estate: "all",
-    currency: "all",
-    price_start: "",
-    price_end: "",
-    order: "",
-    antiquity: "",
-    ambiences: [],
-    bedrooms: [],
-    bathrooms: [],
-    garage: [],
-    total_area_start: "",
-    total_area_end: "",
-    cover_area_start: "",
-    cover_area_end: "",
-    date: "",
-  });
+  // const [filters, setFilters] = useState({
+  //   property_type: "all",
+  //   operation_type: "all",
+  //   departamento: "all",
+  //   real_estate: "all",
+  //   currency: "all",
+  //   price_start: "",
+  //   price_end: "",
+  //   order: "",
+  //   antiquity: "",
+  //   ambiences: [],
+  //   bedrooms: [],
+  //   bathrooms: [],
+  //   garage: [],
+  //   total_area_start: "",
+  //   total_area_end: "",
+  //   cover_area_start: "",
+  //   cover_area_end: "",
+  //   date: "",
+  // });
   const [realEstates, setRealEstates] = useState(null);
   const [url, setUrl] = useState('/properties')
   const [loading, setLoading] = useState(false);
@@ -65,8 +65,6 @@ export default function Home() {
       <main className={s.main}>
         <NavBar route="home" />
         <OrderBy
-          setFilters={setFilters}
-          filters={filters}
           setProperties={setProperties}
           url={url}
         />
@@ -76,7 +74,6 @@ export default function Home() {
               setProperties={setProperties}
               setLoading={setLoading}
               realEstates={realEstates}
-              setFilters={setFilters}
               setUrl={setUrl}
             />
           </div>
