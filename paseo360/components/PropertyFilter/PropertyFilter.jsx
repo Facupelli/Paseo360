@@ -71,7 +71,6 @@ export default function PropertyFilter({
       .get(url)
       .then((res) => {
         setProperties(res.data.properties);
-        console.log('set properties 2')
         setLoading(false);
       })
       .catch((e) => {
@@ -96,8 +95,6 @@ export default function PropertyFilter({
       .get("/properties")
       .then((res) => {
         setProperties(res.data.properties);
-        console.log('set properties 3')
-        setLoading(false);
         methods.reset();
       })
       .catch((e) => {

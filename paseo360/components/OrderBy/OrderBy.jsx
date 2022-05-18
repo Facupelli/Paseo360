@@ -24,7 +24,6 @@ export default function OrderBy({ setFilters, filters, setProperties }) {
     console.log(url)
     axios.get(url).then((res) => {
       setProperties(res.data.properties);
-      console.log('set properties 4')
     });
   };
 

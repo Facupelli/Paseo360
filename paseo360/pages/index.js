@@ -37,7 +37,6 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   // console.log('FILTERS.ANTIQUITY', filters.antiquity)
-  console.log(properties);
 
   useEffect(() => {
     setLoading(true);
@@ -45,7 +44,6 @@ export default function Home() {
       .get("/properties")
       .then((res) => {
         setProperties(res.data.properties);
-        console.log("set properties 1");
         setRealEstates(res.data.realEstates);
         setLoading(false);
       })
