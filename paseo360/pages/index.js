@@ -34,6 +34,7 @@ export default function Home() {
     date: "",
   });
   const [realEstates, setRealEstates] = useState(null);
+  const [url, setUrl] = useState('/properties')
   const [loading, setLoading] = useState(false);
 
   // console.log('FILTERS.ANTIQUITY', filters.antiquity)
@@ -67,6 +68,7 @@ export default function Home() {
           setFilters={setFilters}
           filters={filters}
           setProperties={setProperties}
+          url={url}
         />
         <div className={s.grid_container}>
           <div>
@@ -75,6 +77,7 @@ export default function Home() {
               setLoading={setLoading}
               realEstates={realEstates}
               setFilters={setFilters}
+              setUrl={setUrl}
             />
           </div>
           <div>

@@ -11,6 +11,7 @@ export default function PropertyFilter({
   setLoading,
   realEstates,
   setFilters,
+  setUrl,
 }) {
   const methods = useForm();
 
@@ -66,6 +67,7 @@ export default function PropertyFilter({
       url = `${url}&total_area_end=${total_area_end}`;
     }
 
+    setUrl(url);
     console.log(url);
     axios
       .get(url)
@@ -96,6 +98,7 @@ export default function PropertyFilter({
       .then((res) => {
         setProperties(res.data.properties);
         methods.reset();
+        setLoading(false);
       })
       .catch((e) => {
         console.log(e);
